@@ -30,6 +30,7 @@ En el análisis inicial se han identificado las siguientes disconformidades:
 | 1 | `java:S2119` | `Direccion.java` | 21 | El objeto de tipo Random debe ser reusado |
 | 2 | `java:S106` | `Programa.java` | 20 | La salida estándar no se debe usar para realizar logs |
 | 3 | `java:S4973` | `Programa.java` | 23 | Los String deben compararse con la función equals() |
+| 4 | `java:S108` | `Punto.java` | 148 | El código anidado por llaves no debe estar vacío |
 
 > Deben incluirse **todas las disconformidades observadas en el análisis inicial**.
 
@@ -69,7 +70,7 @@ Para ello se hace uso del logger proporcionado por el propio Java.
 
 **Localización:** `src/.../Progama.java`, línea 23
 **Responsable:** Paula Mei Zaragoza Villegas
-**Commit:** `None`
+**Commit:** `96c5d7d`
 
 **Problema detectado**
 
@@ -79,6 +80,20 @@ Las cadenas de Java deben hacer uso de la función equals().
 
 Se cambia el signo == por la función equals().
 
+### Disconformidad 4 — `java:S108`
+
+**Localización:** `src/.../Punto.java`, línea 148
+**Responsable:** Paula Mei Zaragoza Villegas
+**Commit:** `None`
+
+**Problema detectado**
+
+El código anidado por llaves no debe estar vacío.
+
+**Solución adoptada**
+
+Para solucionarlo, se imprime mediante un Logger la captura de la excepcion.
+
 ---
 
 ## 5. Resumen de las correcciones
@@ -87,7 +102,8 @@ Se cambia el signo == por la función equals().
 |---:|---|---|---|---|
 | 1 | `java:S2119` | Paula Mei Zaragoza Villegas | `fa52b73` | Resuelta |
 | 2 | `java:S106` | Paula Mei Zaragoza Villegas | `a5d2c6a` | Resuelta |
-| 3 | `java:S4973` | Paula Mei Zaragoza Villegas | `None` | Resuelta |
+| 3 | `java:S4973` | Paula Mei Zaragoza Villegas | `96c5d7d` | Resuelta |
+| 4 | `java:108` | Paula Mei Zaragoza Villegas | `None` | Resuelta |
 
 ---
 

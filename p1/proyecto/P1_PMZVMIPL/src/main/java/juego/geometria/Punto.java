@@ -1,5 +1,7 @@
 package juego.geometria;
 
+import java.util.logging.Logger;
+
 import java.lang.Math;
 import java.util.Random;
 
@@ -8,6 +10,8 @@ import java.util.Random;
  *
  */
 public class Punto {
+	
+	private static final Logger logger = Logger.getLogger(Punto.class.getName());
     public final static int defaultValue = 0;
 
      final int x;
@@ -140,7 +144,9 @@ public class Punto {
 			copia = (Punto)super.clone();
 			return copia;
 		}
-		catch(CloneNotSupportedException e){ }
+		catch(CloneNotSupportedException e){ 
+			logger.info(e.getMessage());
+		}
 
 		return null;
 	}
