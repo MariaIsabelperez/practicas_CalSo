@@ -36,6 +36,7 @@ En el análisis inicial se han identificado las siguientes disconformidades:
 | 7 | `java:S1905` | `Punto.java` | 132 | Los casts redundantes no deben ser utilizados |
 | 8 | `java:S1128` | `Punto.java` | 5 | Se deben eliminar los imports innecesarios |
 | 9 | `java:S101` | `Circulo.java` | 3 | El nombre de la clase no sigue las reglas para el nombrado |
+| 10 | `java:S115` | `Punto.java` | 12 | El nombre de la constante no sigue las reglas de nombrado |
 
 > Deben incluirse **todas las disconformidades observadas en el análisis inicial**.
 
@@ -143,7 +144,7 @@ Se elimina esta casting redundante.
 
 ### Disconformidad 8 — `java:S1128`
 
-**Localización:** `src/.../Punto.java`, línea 5
+**Localización:** `src/.../Circulo.java`, línea 5
 **Responsable:** Paula Mei Zaragoza Villegas
 **Commit:** `5de9d9d`
 
@@ -157,9 +158,9 @@ Se elimina el import innecesario.
 
 ### Disconformidad 9 — `java:S101`
 
-**Localización:** `src/.../Punto.java`, línea 3
+**Localización:** `src/.../Circulo.java`, línea 3
 **Responsable:** Paula Mei Zaragoza Villegas
-**Commit:** `None`
+**Commit:** `28272a4`
 
 **Problema detectado**
 
@@ -168,6 +169,20 @@ La clase no sigue la ER correspondiente para Java.
 **Solución adoptada**
 
 Se renombra cumpliendo la ER para el nombrado de clases.
+
+### Disconformidad 10 — `java:S115`
+
+**Localización:** `src/.../Punto.java`, línea 12
+**Responsable:** Paula Mei Zaragoza Villegas
+**Commit:** `None`
+
+**Problema detectado**
+
+El nombre de la constante no sigue las reglas de nombrado.
+
+**Solución adoptada**
+
+Se renombra cumpliendo la ER para el nombrado de constantes.
 
 ---
 
@@ -183,7 +198,8 @@ Se renombra cumpliendo la ER para el nombrado de clases.
 | 6 | `java:S2975` | Paula Mei Zaragoza Villegas | `cbb2472` | Resuelta |
 | 7 | `java:S1905` | Paula Mei Zaragoza Villegas | `cbba16e` | Resuelta |
 | 8 | `java:S1128` | Paula Mei Zaragoza Villegas | `5de9d9d` | Resuelta |
-| 9 | `java:S101` | Paula Mei Zaragoza Villegas | `None` | Resuelta |
+| 9 | `java:S101` | Paula Mei Zaragoza Villegas | `28272a4` | Resuelta |
+| 10 | `java:S115` | Paula Mei Zaragoza Villegas | `None` | Resuelta |
 
 ---
 

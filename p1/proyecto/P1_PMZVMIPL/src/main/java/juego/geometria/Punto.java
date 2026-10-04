@@ -9,7 +9,7 @@ import java.lang.Math;
  */
 public class Punto {
 
-    public final static int defaultValue = 0;
+    public final static int DEFAULT = 0;
 
      final int x;
      final int y;
