@@ -29,6 +29,7 @@ En el análisis inicial se han identificado las siguientes disconformidades:
 |---:|---|---|---:|---|
 | 1 | `java:S2119` | `Direccion.java` | 21 | El objeto de tipo Random debe ser reusado |
 | 2 | `java:S106` | `Programa.java` | 20 | La salida estándar no se debe usar para realizar logs |
+| 3 | `java:S4973` | `Programa.java` | 23 | Los String deben compararse con la función equals() |
 
 > Deben incluirse **todas las disconformidades observadas en el análisis inicial**.
 
@@ -54,7 +55,7 @@ Como solución se ha optado por mover la creación del Random() fuera de la func
 
 **Localización:** `src/.../Progama.java`, línea 20
 **Responsable:** Paula Mei Zaragoza Villegas
-**Commit:** `None`
+**Commit:** `a5d2c6a`
 
 **Problema detectado**
 
@@ -62,8 +63,21 @@ La salida estándar no se debe utilizar para tratar los logs. Se debe usar un lo
 
 **Solución adoptada**
 
-Para ello se hace uso del logger proporcionado por el propio Java. 
+Para ello se hace uso del logger proporcionado por el propio Java.
 
+### Disconformidad 3 — `java:S4973`
+
+**Localización:** `src/.../Progama.java`, línea 23
+**Responsable:** Paula Mei Zaragoza Villegas
+**Commit:** `None`
+
+**Problema detectado**
+
+Las cadenas de Java deben hacer uso de la función equals().
+
+**Solución adoptada**
+
+Se cambia el signo == por la función equals().
 
 ---
 
@@ -72,7 +86,9 @@ Para ello se hace uso del logger proporcionado por el propio Java.
 | Nº | Regla Sonar | Responsable | Commit | Resultado |
 |---:|---|---|---|---|
 | 1 | `java:S2119` | Paula Mei Zaragoza Villegas | `fa52b73` | Resuelta |
-| 2 | `java:S106` | Paula Mei Zaragoza Villegas | `None` | Resuelta |
+| 2 | `java:S106` | Paula Mei Zaragoza Villegas | `a5d2c6a` | Resuelta |
+| 3 | `java:S4973` | Paula Mei Zaragoza Villegas | `None` | Resuelta |
+
 ---
 
 ## 6. Análisis final

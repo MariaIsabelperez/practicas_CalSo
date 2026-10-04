@@ -20,7 +20,7 @@ public class Programa {
       for (Punto punto : puntos)
           info.concat(punto.toString());
 
-     String mensaje = (info == "") ? "no hay puntos" : info; 
+     String mensaje = (info.equals("")) ? "no hay puntos" : info; 
 
      logger.info(mensaje);
     }
