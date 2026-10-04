@@ -38,6 +38,7 @@ En el análisis inicial se han identificado las siguientes disconformidades:
 | 9 | `java:S101` | `Circulo.java` | 3 | El nombre de la clase no sigue las reglas para el nombrado |
 | 10 | `java:S115` | `Punto.java` | 12 | El nombre de la constante no sigue las reglas de nombrado |
 | 11 | `java:S100` | `Punto.java` | 83 | El nombre de la función no sigue las reglas de nombrado |
+| 12 | `java:S100` | `Punto.java` | 52 | El nombre de la función no sigue las reglas de nombrado |
 
 > Deben incluirse **todas las disconformidades observadas en el análisis inicial**.
 
@@ -189,7 +190,7 @@ Se renombra cumpliendo la ER para el nombrado de constantes.
 
 **Localización:** `src/.../Punto.java`, línea 83
 **Responsable:** Paula Mei Zaragoza Villegas
-**Commit:** `None`
+**Commit:** `44a8bc1`
 
 **Problema detectado**
 
@@ -199,6 +200,19 @@ El nombre de la función no sigue las reglas de nombrado.
 
 Se renombra cumpliendo la ER para el nombrado de funciones.
 
+### Disconformidad 12 — `java:S100`
+
+**Localización:** `src/.../Punto.java`, línea 52
+**Responsable:** Paula Mei Zaragoza Villegas
+**Commit:** `None`
+
+**Problema detectado**
+
+El nombre de la función no sigue las reglas de nombrado.
+
+**Solución adoptada**
+
+Se renombra cumpliendo la ER para el nombrado de funciones.
 
 ---
 
@@ -216,7 +230,8 @@ Se renombra cumpliendo la ER para el nombrado de funciones.
 | 8 | `java:S1128` | Paula Mei Zaragoza Villegas | `5de9d9d` | Resuelta |
 | 9 | `java:S101` | Paula Mei Zaragoza Villegas | `28272a4` | Resuelta |
 | 10 | `java:S115` | Paula Mei Zaragoza Villegas | `92ef493` | Resuelta |
-| 11 | `java:S100` | Paula Mei Zaragoza Villegas | `None` | Resuelta |
+| 11 | `java:S100` | Paula Mei Zaragoza Villegas | `44a8bc1` | Resuelta |
+| 12 | `java:S100` | Paula Mei Zaragoza Villegas | `None` | Resuelta |
 
 ---
 
