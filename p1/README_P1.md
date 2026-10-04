@@ -32,6 +32,7 @@ En el análisis inicial se han identificado las siguientes disconformidades:
 | 3 | `java:S4973` | `Programa.java` | 23 | Los String deben compararse con la función equals() |
 | 4 | `java:S108` | `Punto.java` | 148 | El código anidado por llaves no debe estar vacío |
 | 5 | `java:S2225` | `Punto.java` | 151 | El método clone() no debe retornar null |
+| 6 | `java:S2975` | `Punto.java` | 140 | El método clone() no debe ser sobreescrito |
 
 > Deben incluirse **todas las disconformidades observadas en el análisis inicial**.
 
@@ -99,7 +100,7 @@ Para solucionarlo, se imprime mediante un Logger la captura de la excepcion.
 
 **Localización:** `src/.../Punto.java`, línea 151
 **Responsable:** Paula Mei Zaragoza Villegas
-**Commit:** `None`
+**Commit:** `fb47e8d`
 
 **Problema detectado**
 
@@ -108,6 +109,20 @@ El método clone() no debe retornar null.
 **Solución adoptada**
 
 Para solucionarlo, se lanza un un IllegalStateException desde el catch, que evita seguir ejecutando código y nos permite eliminar el return null.
+
+### Disconformidad 6 — `java:S2975`
+
+**Localización:** `src/.../Punto.java`, línea 140
+**Responsable:** Paula Mei Zaragoza Villegas
+**Commit:** `None`
+
+**Problema detectado**
+
+El método clone() no debe ser sobreescrito, se debe usar un constructor de copia.
+
+**Solución adoptada**
+
+Se elimina el métodos clone() y se usa el constructor de copia ya implementado.
 
 ---
 
@@ -119,7 +134,8 @@ Para solucionarlo, se lanza un un IllegalStateException desde el catch, que evit
 | 2 | `java:S106` | Paula Mei Zaragoza Villegas | `a5d2c6a` | Resuelta |
 | 3 | `java:S4973` | Paula Mei Zaragoza Villegas | `96c5d7d` | Resuelta |
 | 4 | `java:S108` | Paula Mei Zaragoza Villegas | `03316d3` | Resuelta |
-| 5 | `java:S2225` | Paula Mei Zaragoza Villegas | `None` | Resuelta |
+| 5 | `java:S2225` | Paula Mei Zaragoza Villegas | `fb47e8d` | Resuelta |
+| 6 | `java:S2975` | Paula Mei Zaragoza Villegas | `None` | Resuelta |
 
 ---
 
