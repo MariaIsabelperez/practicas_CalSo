@@ -146,9 +146,9 @@ public class Punto {
 		}
 		catch(CloneNotSupportedException e){ 
 			logger.info(e.getMessage());
+			throw new IllegalStateException("Error al clonar el punto.");
 		}
 
-		return null;
 	}
 
 }

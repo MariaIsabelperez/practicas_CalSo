@@ -31,6 +31,7 @@ En el análisis inicial se han identificado las siguientes disconformidades:
 | 2 | `java:S106` | `Programa.java` | 20 | La salida estándar no se debe usar para realizar logs |
 | 3 | `java:S4973` | `Programa.java` | 23 | Los String deben compararse con la función equals() |
 | 4 | `java:S108` | `Punto.java` | 148 | El código anidado por llaves no debe estar vacío |
+| 5 | `java:S2225` | `Punto.java` | 151 | El método clone() no debe retornar null |
 
 > Deben incluirse **todas las disconformidades observadas en el análisis inicial**.
 
@@ -84,7 +85,7 @@ Se cambia el signo == por la función equals().
 
 **Localización:** `src/.../Punto.java`, línea 148
 **Responsable:** Paula Mei Zaragoza Villegas
-**Commit:** `None`
+**Commit:** `03316d3`
 
 **Problema detectado**
 
@@ -93,6 +94,20 @@ El código anidado por llaves no debe estar vacío.
 **Solución adoptada**
 
 Para solucionarlo, se imprime mediante un Logger la captura de la excepcion.
+
+### Disconformidad 5 — `java:S2225`
+
+**Localización:** `src/.../Punto.java`, línea 151
+**Responsable:** Paula Mei Zaragoza Villegas
+**Commit:** `None`
+
+**Problema detectado**
+
+El método clone() no debe retornar null.
+
+**Solución adoptada**
+
+Para solucionarlo, se lanza un un IllegalStateException desde el catch, que evita seguir ejecutando código y nos permite eliminar el return null.
 
 ---
 
@@ -103,7 +118,8 @@ Para solucionarlo, se imprime mediante un Logger la captura de la excepcion.
 | 1 | `java:S2119` | Paula Mei Zaragoza Villegas | `fa52b73` | Resuelta |
 | 2 | `java:S106` | Paula Mei Zaragoza Villegas | `a5d2c6a` | Resuelta |
 | 3 | `java:S4973` | Paula Mei Zaragoza Villegas | `96c5d7d` | Resuelta |
-| 4 | `java:108` | Paula Mei Zaragoza Villegas | `None` | Resuelta |
+| 4 | `java:S108` | Paula Mei Zaragoza Villegas | `03316d3` | Resuelta |
+| 5 | `java:S2225` | Paula Mei Zaragoza Villegas | `None` | Resuelta |
 
 ---
 
