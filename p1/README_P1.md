@@ -35,6 +35,7 @@ En el análisis inicial se han identificado las siguientes disconformidades:
 | 6 | `java:S2975` | `Punto.java` | 140 | El método clone() no debe ser sobreescrito |
 | 7 | `java:S1905` | `Punto.java` | 132 | Los casts redundantes no deben ser utilizados |
 | 8 | `java:S1128` | `Punto.java` | 5 | Se deben eliminar los imports innecesarios |
+| 9 | `java:S101` | `Circulo.java` | 3 | El nombre de la clase no sigue las reglas para el nombrado |
 
 > Deben incluirse **todas las disconformidades observadas en el análisis inicial**.
 
@@ -140,11 +141,11 @@ Los casts redundantes no deben ser utilizados. Los casts deben ser usados para c
 
 Se elimina esta casting redundante.
 
-### Disconformidad 7 — `java:S1128`
+### Disconformidad 8 — `java:S1128`
 
 **Localización:** `src/.../Punto.java`, línea 5
 **Responsable:** Paula Mei Zaragoza Villegas
-**Commit:** `None`
+**Commit:** `5de9d9d`
 
 **Problema detectado**
 
@@ -153,6 +154,20 @@ Se deben eliminar los imports innecesarios.
 **Solución adoptada**
 
 Se elimina el import innecesario.
+
+### Disconformidad 9 — `java:S101`
+
+**Localización:** `src/.../Punto.java`, línea 3
+**Responsable:** Paula Mei Zaragoza Villegas
+**Commit:** `None`
+
+**Problema detectado**
+
+La clase no sigue la ER correspondiente para Java.
+
+**Solución adoptada**
+
+Se renombra cumpliendo la ER para el nombrado de clases.
 
 ---
 
@@ -167,7 +182,8 @@ Se elimina el import innecesario.
 | 5 | `java:S2225` | Paula Mei Zaragoza Villegas | `fb47e8d` | Resuelta |
 | 6 | `java:S2975` | Paula Mei Zaragoza Villegas | `cbb2472` | Resuelta |
 | 7 | `java:S1905` | Paula Mei Zaragoza Villegas | `cbba16e` | Resuelta |
-| 8 | `java:S1128` | Paula Mei Zaragoza Villegas | `None` | Resuelta |
+| 8 | `java:S1128` | Paula Mei Zaragoza Villegas | `5de9d9d` | Resuelta |
+| 9 | `java:S101` | Paula Mei Zaragoza Villegas | `None` | Resuelta |
 
 ---
 
