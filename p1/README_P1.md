@@ -4,8 +4,8 @@
 
 | Miembro | Nombre y apellidos |
 |---|---|
-| Alumno/a 1 | Paula Mei Zaragoza Villegas |
-| Alumno/a 2 | María Isabel Pérez Lisón |
+| Alumna 1 | María Isabel Pérez Lisón |
+| Alumna 2 | Paula Mei Zaragoza Villegas |
 
 **Nombre del proyecto Eclipse:** `P1_PMZVMIPL`
 
@@ -27,9 +27,7 @@ En el análisis inicial se han identificado las siguientes disconformidades:
 
 | Nº | Regla Sonar | Archivo | Línea | Disconformidad |
 |---:|---|---|---:|---|
-| 1 | `java:SXXXX` | `Clase.java` | XX | Descripción de la disconformidad |
-| 2 | `java:SXXXX` | `Clase.java` | XX | Descripción de la disconformidad |
-| 3 | `java:SXXXX` | `Clase.java` | XX | Descripción de la disconformidad |
+| 1 | `java:S2119` | `Direccion.java` | 21 | El objeto de tipo Random debe ser reusado |
 
 > Deben incluirse **todas las disconformidades observadas en el análisis inicial**.
 
@@ -37,51 +35,19 @@ En el análisis inicial se han identificado las siguientes disconformidades:
 
 ## 4. Soluciones adoptadas
 
-### Disconformidad 1 — `java:SXXXX`
+### Disconformidad 1 — `java:S2119`
 
-**Localización:** `src/.../Clase.java`, línea XX  
-**Responsable:** NOMBRE Y APELLIDOS  
-**Commit:** `abcdef1`
-
-**Problema detectado**
-
-Descripción breve del problema indicado por SonarQube for Eclipse.
-
-**Solución adoptada**
-
-Descripción de la modificación realizada para resolver la disconformidad.
-
----
-
-### Disconformidad 2 — `java:SXXXX`
-
-**Localización:** `src/.../Clase.java`, línea XX  
-**Responsable:** NOMBRE Y APELLIDOS  
-**Commit:** `abcdef2`
+**Localización:** `src/.../Direccion.java`, línea 21  
+**Responsable:** Paula Mei Zaragoza Villegas 
+**Commit:** `None`
 
 **Problema detectado**
 
-Descripción breve del problema indicado por SonarQube for Eclipse.
+El objeto de tipo Random no se reusa y puede llegar a ser ineficiente, puediendo provocar números no aleatorios. 
 
 **Solución adoptada**
 
-Descripción de la modificación realizada para resolver la disconformidad.
-
----
-
-### Disconformidad 3 — `java:SXXXX`
-
-**Localización:** `src/.../Clase.java`, línea XX  
-**Responsable:** NOMBRE Y APELLIDOS  
-**Commit:** `abcdef3`
-
-**Problema detectado**
-
-Descripción breve del problema indicado por SonarQube for Eclipse.
-
-**Solución adoptada**
-
-Descripción de la modificación realizada para resolver la disconformidad.
+Como solución se ha optado por mover la creación del Random() fuera de la función, y se ha declarado como una variable estática y final (variable global).
 
 ---
 
@@ -89,10 +55,7 @@ Descripción de la modificación realizada para resolver la disconformidad.
 
 | Nº | Regla Sonar | Responsable | Commit | Resultado |
 |---:|---|---|---|---|
-| 1 | `java:SXXXX` | Nombre y apellidos | `abcdef1` | Resuelta |
-| 2 | `java:SXXXX` | Nombre y apellidos | `abcdef2` | Resuelta |
-| 3 | `java:SXXXX` | Nombre y apellidos | `abcdef3` | Resuelta |
-
+| 1 | `java:S2119` | Paula Mei Zaragoza Villegas | `None` | Resuelta |
 ---
 
 ## 6. Análisis final
@@ -121,14 +84,14 @@ El proyecto incluido en esta carpeta contiene las modificaciones correspondiente
 
 ## 8. Comprobación de la entrega
 
-- [ ] El nombre del proyecto sigue el formato establecido: `P1_INICIALES`.
-- [ ] Se identifican los dos miembros del grupo.
-- [ ] Se incluye la captura del análisis inicial.
+- [X] El nombre del proyecto sigue el formato establecido: `P1_INICIALES`.
+- [X] Se identifican los dos miembros del grupo.
+- [X] Se incluye la captura del análisis inicial.
 - [ ] Se han documentado todas las disconformidades inicialmente detectadas.
 - [ ] Cada solución está asociada a un commit identificable en `main`.
 - [ ] Se identifica qué miembro del grupo realizó cada corrección.
 - [ ] Los dos miembros han participado mediante commits propios.
 - [ ] Se incluye la captura del análisis final.
 - [ ] La captura final permite comprobar que no quedan disconformidades.
-- [ ] Se ha incorporado el proyecto Eclipse final dentro de `P1/proyecto/`.
+- [X] Se ha incorporado el proyecto Eclipse final dentro de `P1/proyecto/`.
 - [ ] El proyecto final corresponde al código analizado en la captura final.
