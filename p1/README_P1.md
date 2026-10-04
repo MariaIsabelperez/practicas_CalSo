@@ -34,6 +34,7 @@ En el análisis inicial se han identificado las siguientes disconformidades:
 | 5 | `java:S2225` | `Punto.java` | 151 | El método clone() no debe retornar null |
 | 6 | `java:S2975` | `Punto.java` | 140 | El método clone() no debe ser sobreescrito |
 | 7 | `java:S1905` | `Punto.java` | 132 | Los casts redundantes no deben ser utilizados |
+| 8 | `java:S1128` | `Punto.java` | 5 | Se deben eliminar los imports innecesarios |
 
 > Deben incluirse **todas las disconformidades observadas en el análisis inicial**.
 
@@ -125,11 +126,11 @@ El método clone() no debe ser sobreescrito, se debe usar un constructor de copi
 
 Se elimina el métodos clone() y se usa el constructor de copia ya implementado.
 
-### Disconformidad 7 — `java:1905`
+### Disconformidad 7 — `java:S1905`
 
 **Localización:** `src/.../Punto.java`, línea 132
 **Responsable:** Paula Mei Zaragoza Villegas
-**Commit:** `None`
+**Commit:** `cbba16e`
 
 **Problema detectado**
 
@@ -138,6 +139,20 @@ Los casts redundantes no deben ser utilizados. Los casts deben ser usados para c
 **Solución adoptada**
 
 Se elimina esta casting redundante.
+
+### Disconformidad 7 — `java:S1128`
+
+**Localización:** `src/.../Punto.java`, línea 5
+**Responsable:** Paula Mei Zaragoza Villegas
+**Commit:** `None`
+
+**Problema detectado**
+
+Se deben eliminar los imports innecesarios.
+
+**Solución adoptada**
+
+Se elimina el import innecesario.
 
 ---
 
@@ -151,7 +166,8 @@ Se elimina esta casting redundante.
 | 4 | `java:S108` | Paula Mei Zaragoza Villegas | `03316d3` | Resuelta |
 | 5 | `java:S2225` | Paula Mei Zaragoza Villegas | `fb47e8d` | Resuelta |
 | 6 | `java:S2975` | Paula Mei Zaragoza Villegas | `cbb2472` | Resuelta |
-| 7 | `java:` | Paula Mei Zaragoza Villegas | `None` | Resuelta |
+| 7 | `java:S1905` | Paula Mei Zaragoza Villegas | `cbba16e` | Resuelta |
+| 8 | `java:S1128` | Paula Mei Zaragoza Villegas | `None` | Resuelta |
 
 ---
 
