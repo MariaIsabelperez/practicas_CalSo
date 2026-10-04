@@ -129,7 +129,7 @@ public class Punto {
 		if (this == obj)
 			return true;
 
-		Punto other = (Punto) obj;
+		Punto other = obj;
 		
 		return  (x == other.x && y == other.y);
 	}

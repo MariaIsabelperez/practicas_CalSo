@@ -33,6 +33,7 @@ En el análisis inicial se han identificado las siguientes disconformidades:
 | 4 | `java:S108` | `Punto.java` | 148 | El código anidado por llaves no debe estar vacío |
 | 5 | `java:S2225` | `Punto.java` | 151 | El método clone() no debe retornar null |
 | 6 | `java:S2975` | `Punto.java` | 140 | El método clone() no debe ser sobreescrito |
+| 7 | `java:S1905` | `Punto.java` | 132 | Los casts redundantes no deben ser utilizados |
 
 > Deben incluirse **todas las disconformidades observadas en el análisis inicial**.
 
@@ -114,7 +115,7 @@ Para solucionarlo, se lanza un un IllegalStateException desde el catch, que evit
 
 **Localización:** `src/.../Punto.java`, línea 140
 **Responsable:** Paula Mei Zaragoza Villegas
-**Commit:** `None`
+**Commit:** `cbb2472`
 
 **Problema detectado**
 
@@ -123,6 +124,20 @@ El método clone() no debe ser sobreescrito, se debe usar un constructor de copi
 **Solución adoptada**
 
 Se elimina el métodos clone() y se usa el constructor de copia ya implementado.
+
+### Disconformidad 7 — `java:1905`
+
+**Localización:** `src/.../Punto.java`, línea 132
+**Responsable:** Paula Mei Zaragoza Villegas
+**Commit:** `None`
+
+**Problema detectado**
+
+Los casts redundantes no deben ser utilizados. Los casts deben ser usados para convertir un dato a de tipo distinto.
+
+**Solución adoptada**
+
+Se elimina esta casting redundante.
 
 ---
 
@@ -135,7 +150,8 @@ Se elimina el métodos clone() y se usa el constructor de copia ya implementado.
 | 3 | `java:S4973` | Paula Mei Zaragoza Villegas | `96c5d7d` | Resuelta |
 | 4 | `java:S108` | Paula Mei Zaragoza Villegas | `03316d3` | Resuelta |
 | 5 | `java:S2225` | Paula Mei Zaragoza Villegas | `fb47e8d` | Resuelta |
-| 6 | `java:S2975` | Paula Mei Zaragoza Villegas | `None` | Resuelta |
+| 6 | `java:S2975` | Paula Mei Zaragoza Villegas | `cbb2472` | Resuelta |
+| 7 | `java:` | Paula Mei Zaragoza Villegas | `None` | Resuelta |
 
 ---
 
