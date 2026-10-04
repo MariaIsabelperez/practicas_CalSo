@@ -28,6 +28,7 @@ En el análisis inicial se han identificado las siguientes disconformidades:
 | Nº | Regla Sonar | Archivo | Línea | Disconformidad |
 |---:|---|---|---:|---|
 | 1 | `java:S2119` | `Direccion.java` | 21 | El objeto de tipo Random debe ser reusado |
+| 2 | `java:S106` | `Programa.java` | 20 | La salida estándar no se debe usar para realizar logs |
 
 > Deben incluirse **todas las disconformidades observadas en el análisis inicial**.
 
@@ -38,16 +39,31 @@ En el análisis inicial se han identificado las siguientes disconformidades:
 ### Disconformidad 1 — `java:S2119`
 
 **Localización:** `src/.../Direccion.java`, línea 21  
-**Responsable:** Paula Mei Zaragoza Villegas 
-**Commit:** `None`
+**Responsable:** Paula Mei Zaragoza Villegas
+**Commit:** `fa52b73`
 
 **Problema detectado**
 
-El objeto de tipo Random no se reusa y puede llegar a ser ineficiente, puediendo provocar números no aleatorios. 
+El objeto de tipo Random no se reusa y puede llegar a ser ineficiente, puediendo provocar números no aleatorios.
 
 **Solución adoptada**
 
 Como solución se ha optado por mover la creación del Random() fuera de la función, y se ha declarado como una variable estática y final (variable global).
+
+### Disconformidad 2 — `java:S106`
+
+**Localización:** `src/.../Progama.java`, línea 20
+**Responsable:** Paula Mei Zaragoza Villegas
+**Commit:** `None`
+
+**Problema detectado**
+
+La salida estándar no se debe utilizar para tratar los logs. Se debe usar un logger dedicado ya que la salida estándar no es uniforme ni segura.
+
+**Solución adoptada**
+
+Para ello se hace uso del logger proporcionado por el propio Java. 
+
 
 ---
 
@@ -55,7 +71,8 @@ Como solución se ha optado por mover la creación del Random() fuera de la func
 
 | Nº | Regla Sonar | Responsable | Commit | Resultado |
 |---:|---|---|---|---|
-| 1 | `java:S2119` | Paula Mei Zaragoza Villegas | `None` | Resuelta |
+| 1 | `java:S2119` | Paula Mei Zaragoza Villegas | `fa52b73` | Resuelta |
+| 2 | `java:S106` | Paula Mei Zaragoza Villegas | `None` | Resuelta |
 ---
 
 ## 6. Análisis final
