@@ -118,14 +118,21 @@ public class Punto {
 	}
 
 	
-	public boolean equals(Punto obj) {
+	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 
-		Punto other = obj;
+		if (!(obj instanceof Punto))
+			return false;
+		
+		Punto other = (Punto) obj;
 		
 		return  (x == other.x && y == other.y);
 	}
-
+	
+	@Override
+	public int hashCode() {
+		return 31 * x + y;
+	}
 }
 
