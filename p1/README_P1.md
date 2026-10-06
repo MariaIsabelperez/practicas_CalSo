@@ -39,6 +39,17 @@ En el análisis inicial se han identificado las siguientes disconformidades:
 | 10 | `java:S115` | `Punto.java` | 12 | El nombre de la constante no sigue las reglas de nombrado |
 | 11 | `java:S100` | `Punto.java` | 83 | El nombre de la función no sigue las reglas de nombrado |
 | 12 | `java:S100` | `Punto.java` | 52 | El nombre de la función no sigue las reglas de nombrado |
+| 13 | `java:S125` | `Circulo.java` | 10 | El atributo 'centro' no se inicializa usando el parámetro 'centroIni' |
+| 14 | `java:S1197` | `Dirección.java` | 21 | Los corchetes del array deben declararse junto al tipo y no junto al nombre de la variable |
+| 15 | `java:S1197` | `Programa.java` | 11 | Los corchetes del array deben declararse junto al tipo y no junto al nombre de la variable |
+| 16 | `java:S1197` | `Programa.java` | 15 | Los corchetes del array deben declararse junto al tipo y no junto al nombre de la variable |
+| 17 | `java:S2201` | `Programa.java` | 21 | El valor devuelto por concat() no se utiliza |
+| 18 | `java:S1124` | `Punto.java` | 12 | El orden de los modificadores no sigue la especificación de Java |
+| 19 | `java:S2184` | `Punto.java` | 118 | Casting innecesarios ya que se elimina el método en la última disconformidad |
+| 20 | `java:S2184` | `Punto.java` | 118 | Casting innecesarios ya que se elimina el método en la última disconformidad |
+| 21 | `java:S1201` | `Punto.java` | 121 | El método equals(Punto) no sobrescribe correctamente el método equals(Object) |
+| 22 | `java:S1128` | `Punto.java` | 4 | Eliminación de import innecesario |
+| 23 | `java:S1144` | `Punto.java` | 117  | Eliminación del método distancia() por no ser usado |
 
 > Deben incluirse **todas las disconformidades observadas en el análisis inicial**.
 
