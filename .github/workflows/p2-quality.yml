@@ -3,7 +3,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'P2/docs/P2_PMZVMIPL/**'
+      - 'p2/docs/P2_PMZVMIPL/**'
       - '.github/workflows/p2-quality.yml'
   workflow_dispatch:
 
@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: P2/docs/P2_PMZVMIPL
+        working-directory: p2/docs/P2_PMZVMIPL
     steps:
       - name: Checkout
         uses: actions/checkout@v4
