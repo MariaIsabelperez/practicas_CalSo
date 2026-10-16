@@ -3,7 +3,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'P2/P2_INICIALES/**'
+      - 'P2/P2_PMZVMIPL/**'
       - '.github/workflows/p2-quality.yml'
   workflow_dispatch:
 
@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: P2/P"_INICIALES
+        working-directory: P2/P2_PMZVMIPL
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -27,7 +27,7 @@ jobs:
           distribution: temurin
           java-version: '21'
           cache: maven
-          cache-dependency-path: P2/P2_INICIALES/pom.xml
+          cache-dependency-path: P2/P2_PMZVMIPL/pom.xml
       - name: Pruebas JUnit e informe JaCoCo
         run: mvn -B clean verify
       - name: Comprobar configuracion
