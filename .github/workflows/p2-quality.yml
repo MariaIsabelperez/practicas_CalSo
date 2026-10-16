@@ -32,8 +32,8 @@ jobs:
       - name: Comprobar configuracion
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
-          SONAR_PROJECT_KEY: ${{ vars.SONAR_PROJECT_KEY }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          SONAR_PROJECT_KEY: ${{ secrets.SONAR_PROJECT_KEY }}
         run: |
           test -n "$SONAR_TOKEN" || { echo 'Falta SONAR_TOKEN'; exit 1; }
           test -n "$SONAR_HOST_URL" || { echo 'Falta SONAR_HOST_URL'; exit 1; }
@@ -41,8 +41,8 @@ jobs:
       - name: Publicar analisis en SonarQube
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
-          SONAR_PROJECT_KEY: ${{ vars.SONAR_PROJECT_KEY }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          SONAR_PROJECT_KEY: ${{ secrets.SONAR_PROJECT_KEY }}
         run: >
           mvn -B org.sonarsource.scanner.maven:sonar-maven-plugin:5.1.0.4751:sonar
           -Dsonar.projectKey="$SONAR_PROJECT_KEY"
