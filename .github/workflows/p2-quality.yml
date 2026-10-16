@@ -27,7 +27,6 @@ jobs:
           distribution: temurin
           java-version: '21'
           cache: maven
-          cache-dependency-path: P2/docs/P2_PMZVMIPL
       - name: Pruebas JUnit e informe JaCoCo
         run: mvn -B clean verify
       - name: Comprobar configuracion
