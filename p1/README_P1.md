@@ -45,11 +45,11 @@ En el análisis inicial se han identificado las siguientes disconformidades:
 | 16 | `java:S1197` | `Programa.java` | 15 | Los corchetes del array deben declararse junto al tipo y no junto al nombre de la variable |
 | 17 | `java:S2201` | `Programa.java` | 21 | El valor devuelto por concat() no se utiliza |
 | 18 | `java:S1124` | `Punto.java` | 12 | El orden de los modificadores no sigue la especificación de Java |
-| 19 | `java:S2184` | `Punto.java` | 118 | Casting innecesarios ya que se elimina el método en la última disconformidad |
-| 20 | `java:S2184` | `Punto.java` | 118 | Casting innecesarios ya que se elimina el método en la última disconformidad |
+| 19 | `java:S2184` | `Punto.java` | 118 | Operación de resta entre valores enteros utilizada posteriormente en un cálculo de tipo double sin conversión explícita |
+| 20 | `java:S2184` | `Punto.java` | 118 | Operación de resta entre valores enteros utilizada posteriormente en un cálculo de tipo double sin conversión explícita |
 | 21 | `java:S1201` | `Punto.java` | 121 | El método equals(Punto) no sobrescribe correctamente el método equals(Object) |
 | 22 | `java:S1128` | `Punto.java` | 4 | Eliminación de import innecesario |
-| 23 | `java:S1144` | `Punto.java` | 117  | Eliminación del método distancia() por no ser usado |
+| 23 | `java:S1144` | `Punto.java` | 117  | Método distancia() identificado como no utilizado por su nivel de visibilidad |
 
 > Deben incluirse **todas las disconformidades observadas en el análisis inicial**.
 
@@ -225,6 +225,160 @@ El nombre de la función no sigue las reglas de nombrado.
 
 Se renombra cumpliendo la ER para el nombrado de funciones.
 
+### Disconformidad 13 — `java:S125`
+
+**Localización:** `src/.../Circulo.java`, línea 10  
+**Responsable:** María Isabel Pérez Lisón  
+**Commit:** `9ca839a`
+
+**Problema detectado**
+
+El atributo 'centro' no se inicializa utilizando el parámetro recibido en el constructor, lo que provoca que el valor pasado como argumento sea ignorado.
+
+**Solución adoptada**
+
+Se modifica el constructor para inicializar correctamente el atributo 'centro' a partir del parámetro 'centroIni'.
+
+### Disconformidad 14 — `java:S1197`
+
+**Localización:** `src/.../Dirección.java`, línea 21  
+**Responsable:** María Isabel Pérez Lisón  
+**Commit:** `8ebe6e5`
+
+**Problema detectado**
+
+Los corchetes de un array deben declararse junto al tipo de dato y no junto al nombre de la variable.
+
+**Solución adoptada**
+
+Se cambia la declaración del array para que los corchetes aparezcan junto al tipo siguiendo la convención recomendada por Java.
+
+### Disconformidad 15 — `java:S1197`
+
+**Localización:** `src/.../Programa.java`, línea 11  
+**Responsable:** María Isabel Pérez Lisón  
+**Commit:** `8ebe6e5`
+
+**Problema detectado**
+
+Los corchetes de un array deben declararse junto al tipo de dato y no junto al nombre de la variable.
+
+**Solución adoptada**
+
+Se cambia la declaración del array para que los corchetes aparezcan junto al tipo siguiendo la convención recomendada por Java.
+
+### Disconformidad 16 — `java:S1197`
+
+**Localización:** `src/.../Programa.java`, línea 15  
+**Responsable:** María Isabel Pérez Lisón  
+**Commit:** `8ebe6e5`
+
+**Problema detectado**
+
+Los corchetes de un array deben declararse junto al tipo de dato y no junto al nombre de la variable.
+
+**Solución adoptada**
+
+Se cambia la declaración del array para que los corchetes aparezcan junto al tipo siguiendo la convención recomendada por Java.
+
+### Disconformidad 17 — `java:S2201`
+
+**Localización:** `src/.../Programa.java`, línea 21  
+**Responsable:** María Isabel Pérez Lisón  
+**Commit:** `874edf3`
+
+**Problema detectado**
+
+El método concat() devuelve una nueva cadena, pero el resultado devuelto no se utiliza.
+
+**Solución adoptada**
+
+Se almacena el resultado de concat() en una variable o se reasigna a la cadena original para que la operación tenga efecto.
+
+### Disconformidad 18 — `java:S1124`
+
+**Localización:** `src/.../Punto.java`, línea 12  
+**Responsable:** María Isabel Pérez Lisón  
+**Commit:** `26f9f6a`
+
+**Problema detectado**
+
+El orden de los modificadores de la constante no sigue el establecido en la especificación del lenguaje Java.
+
+**Solución adoptada**
+
+Se reorganizan los modificadores para cumplir el orden recomendado por Java.
+
+### Disconformidad 19 — `java:S2184`
+
+**Localización:** `src/.../Punto.java`, línea 118  
+**Responsable:** María Isabel Pérez Lisón  
+**Commit:** `a5e6e45`
+
+**Problema detectado**
+
+La operación aritmética utiliza tipos enteros cuando posteriormente el resultado se emplea en cálculos de precisión real.
+
+**Solución adoptada**
+
+Se realiza una conversión explícita a double para garantizar que la operación se efectúe utilizando aritmética en coma flotante.
+
+### Disconformidad 20 — `java:S2184`
+
+**Localización:** `src/.../Punto.java`, línea 118  
+**Responsable:** María Isabel Pérez Lisón  
+**Commit:** `a5e6e45`
+
+**Problema detectado**
+
+La operación aritmética utiliza tipos enteros cuando posteriormente el resultado se emplea en cálculos de precisión real.
+
+**Solución adoptada**
+
+Se realiza una conversión explícita a double para garantizar que la operación se efectúe utilizando aritmética en coma flotante.
+
+### Disconformidad 21 — `java:S1201`
+
+**Localización:** `src/.../Punto.java`, línea 121  
+**Responsable:** María Isabel Pérez Lisón  
+**Commit:** `31d88ce`
+
+**Problema detectado**
+
+El método equals(Punto) no sobreescribe correctamente el método equals(Object), inclumpliendo el contrato definido por Java.
+
+**Solución adoptada**
+
+Se redefine el método utilizando la signatura equals(Object) y realizando la comprobación de tipos correspondiente antes de comparar los atributos.
+
+### Disconformidad 22 — `java:S1128`
+
+**Localización:** `src/.../Punto.java`, línea 4  
+**Responsable:** María Isabel Pérez Lisón  
+**Commit:** `5988b13`
+
+**Problema detectado**
+
+Existe un import que no es utilizado en ninguna parte de la clase.
+
+**Solución adoptada**
+
+Se elimina el import innecesario para reducir dependencias y mejorar la legibilidad del código.
+
+### Disconformidad 23 — `java:S1144`
+
+**Localización:** `src/.../Punto.java`, línea 117  
+**Responsable:** María Isabel Pérez Lisón  
+**Commit:** `a5e6e45`
+
+**Problema detectado**
+
+SonarQube identificó el método distancia() como un método no utilizado debido a su nivel de visibilidad, lo que provocaba que apareciera como código potencialmente innecesario.
+
+**Solución adoptada**
+
+Se modificó la visibilidad del método distancia() a public, permitiendo su utilización desde otras clases del proyecto.
+
 ---
 
 ## 5. Resumen de las correcciones
@@ -243,6 +397,18 @@ Se renombra cumpliendo la ER para el nombrado de funciones.
 | 10 | `java:S115` | Paula Mei Zaragoza Villegas | `92ef493` | Resuelta |
 | 11 | `java:S100` | Paula Mei Zaragoza Villegas | `44a8bc1` | Resuelta |
 | 12 | `java:S100` | Paula Mei Zaragoza Villegas | `None` | Resuelta |
+| 13 | `java:S125` | María Isabel Pérez Lisón | `9ca839a` | Resuelta |
+| 14 | `java:S1197` | María Isabel Pérez Lisón | `8ebe6e5` | Resuelta |
+| 15 | `java:S1197` | María Isabel Pérez Lisón | `8ebe6e5` | Resuelta |
+| 16 | `java:S1197` | María Isabel Pérez Lisón | `8ebe6e5` | Resuelta |
+| 17 | `java:S2201` | María Isabel Pérez Lisón | `874edf3` | Resuelta |
+| 18 | `java:S1124` | María Isabel Pérez Lisón | `26f9f6a` | Resuelta |
+| 19| `java:S2184` | María Isabel Pérez Lisón | `a5e6e45` | Resuelta |
+| 20 | `java:S2184` | María Isabel Pérez Lisón | `a5e6e45` | Resuelta |
+| 21 | `java:S1201` | María Isabel Pérez Lisón | `31d88ce` | Resuelta |
+| 22 | `java:S1128` | María Isabel Pérez Lisón | `5988b13` | Resuelta |
+| 23 | `java:S1144` | María Isabel Pérez Lisón | `a5e6e45` | Resuelta |
+
 
 ---
 
@@ -275,11 +441,11 @@ El proyecto incluido en esta carpeta contiene las modificaciones correspondiente
 - [X] El nombre del proyecto sigue el formato establecido: `P1_INICIALES`.
 - [X] Se identifican los dos miembros del grupo.
 - [X] Se incluye la captura del análisis inicial.
-- [ ] Se han documentado todas las disconformidades inicialmente detectadas.
-- [ ] Cada solución está asociada a un commit identificable en `main`.
-- [ ] Se identifica qué miembro del grupo realizó cada corrección.
-- [ ] Los dos miembros han participado mediante commits propios.
-- [ ] Se incluye la captura del análisis final.
-- [ ] La captura final permite comprobar que no quedan disconformidades.
+- [X] Se han documentado todas las disconformidades inicialmente detectadas.
+- [X] Cada solución está asociada a un commit identificable en `main`.
+- [X] Se identifica qué miembro del grupo realizó cada corrección.
+- [X] Los dos miembros han participado mediante commits propios.
+- [X] Se incluye la captura del análisis final.
+- [X] La captura final permite comprobar que no quedan disconformidades.
 - [X] Se ha incorporado el proyecto Eclipse final dentro de `P1/proyecto/`.
-- [ ] El proyecto final corresponde al código analizado en la captura final.
+- [X] El proyecto final corresponde al código analizado en la captura final.
