@@ -8,7 +8,7 @@ public final class Energy {
     }
     
     public static Energy of(int units) {
-        if (units < 0) 
+        if (units <= 0)	//Sólo acepta valores estrictamente mayores que 0
             throw new IllegalArgumentException("Energy must be positive");
         return new Energy(units);
     }
@@ -18,12 +18,18 @@ public final class Energy {
     }
     
     @Override
-    public boolean equals(Object other) { 
-        return this == other; 
+    public boolean equals(Object other) { //Debe compararse el atributo que representa la energía
+        if (this == other) {
+        	return true;
+        }
+        if (!(other instanceof Energy energy)) {
+        	return false;
+        }
+        return units == energy.units;
     }
     
     @Override
-    public int hashCode() { 
-        return System.identityHashCode(this); 
+    public int hashCode() { //Debe depender del valor almacenado
+        return Integer.hashCode(units); 
     }
 }
