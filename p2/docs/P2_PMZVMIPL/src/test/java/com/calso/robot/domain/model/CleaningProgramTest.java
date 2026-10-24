@@ -50,14 +50,14 @@ public class CleaningProgramTest {
 	}
 	
 	@Test
-	void testGivenNullEnergyWhenCreatingProgramThenTrowsException() {
-		assertThrows(RuntimeException.class, 
+	void testGivenNullEnergyWhenCreatingProgramThenTrowsNullPointerException() {
+		assertThrows(NullPointerException.class, 
 				() -> new CleaningProgram("P1", "Program", null, Map.of()));
 	}
 	
 	@Test
-	void testGivenNullRequirementsWhenCreatingProgramThenTrowsException() {
-		assertThrows(RuntimeException.class, 
+	void testGivenNullRequirementsWhenCreatingProgramThenTrowsNullPointerException() {
+		assertThrows(NullPointerException.class, 
 				() -> new CleaningProgram("P1", "Program", Energy.of(10), null));
 	}
 	
