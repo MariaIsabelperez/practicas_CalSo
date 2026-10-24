@@ -1,4 +1,4 @@
-package com.calso.robot.domain;
+package com.calso.robot.domain.model;
 
 public class CleaningProgramTest {
 
