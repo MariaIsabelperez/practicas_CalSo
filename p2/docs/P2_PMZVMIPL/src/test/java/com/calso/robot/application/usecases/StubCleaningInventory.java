@@ -5,7 +5,7 @@ import com.calso.robot.domain.model.CleaningProduct;
 import com.calso.robot.domain.repositories.ICleaningInventory;
 
 /**
- * Suplantador de inventario para pruebas. IMPLEMENTACIÓN PENDIENTE.
+ * Suplantador de inventario para pruebas.
  * La implementación debe mantenerse exclusivamente bajo src/test/java.
  */
 public final class StubCleaningInventory implements ICleaningInventory {

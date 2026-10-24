@@ -1,7 +1,7 @@
 package com.calso.robot.domain.model;
 
 public enum CleaningProduct {
-    WATER("agua"), SOAP("jabón"), WAX("cera"), GLASS_CLEANER("cristales");
+    WATER("agua"), SOAP("jabón"), WAX("cera"), GLASS_CLEANER("limpiacristales");	//nombre erróneo para el último
     
     private final String label;
     
