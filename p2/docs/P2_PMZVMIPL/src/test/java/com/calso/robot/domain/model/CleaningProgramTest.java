@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
@@ -14,57 +14,112 @@ import com.calso.robot.domain.valueobjects.Energy;
 
 public class CleaningProgramTest {
 	@Test
-	void testGivenNullIdWhenCreatingProgramThenTrowsIllegalArgumentException() {
-		assertThrows(IllegalArgumentException.class, 
-					() -> new CleaningProgram(null, "Program", Energy.of(10), Map.of()));
+	void testGivenNullIdWhenCreatingProgramThenThrowsIllegalArgumentException() {
+		Energy energy = Energy.of(10);
+		Map<CleaningProduct, Integer> requirements = Map.of();
+		assertThrows(
+				IllegalArgumentException.class, 
+					() -> new CleaningProgram(
+							null,
+							"Program",
+							energy,
+							requirements));
 	}
 	
 	@Test
-	void testGivenEmptyIdWhenCreatingProgramThenTrowsIllegalArgumentException() {
-		assertThrows(IllegalArgumentException.class, 
-				() -> new CleaningProgram("", "Program", Energy.of(10), Map.of()));
+	void testGivenEmptyIdWhenCreatingProgramThenThrowsIllegalArgumentException() {
+		Energy energy = Energy.of(10);
+		Map<CleaningProduct, Integer> requirements = Map.of();
+		assertThrows(
+				IllegalArgumentException.class, 
+				() -> new CleaningProgram(
+						"",
+						"Program",
+						energy,
+						requirements));
 	}
 	
 	@Test
-	void testGivenBlankIdWhenCreatingProgramThenTrowsIllegalArgumentException() {
-		assertThrows(IllegalArgumentException.class, 
-				() -> new CleaningProgram(" ", "Program", Energy.of(10), Map.of()));
+	void testGivenBlankIdWhenCreatingProgramThenThrowsIllegalArgumentException() {
+		Energy energy = Energy.of(10);
+		Map<CleaningProduct, Integer> requirements = Map.of();
+		assertThrows(
+				IllegalArgumentException.class, 
+				() -> new CleaningProgram(
+						" ",
+						"Program",
+						energy,
+						requirements));
 	}
 	
 	@Test
-	void testGivenNullNameWhenCreatingProgramThenTrowsIllegalArgumentException() {
-		assertThrows(IllegalArgumentException.class, 
-				() -> new CleaningProgram("P1", null, Energy.of(10), Map.of()));
+	void testGivenNullNameWhenCreatingProgramThenThrowsIllegalArgumentException() {
+		Energy energy = Energy.of(10);
+		Map<CleaningProduct, Integer> requirements = Map.of();
+		assertThrows(
+				IllegalArgumentException.class, 
+				() -> new CleaningProgram(
+						"P1",
+						null,
+						energy,
+						requirements));
 	}
 	
 	@Test
-	void testGivenEmptyNameWhenCreatingProgramThenTrowsIllegalArgumentException() {
-		assertThrows(IllegalArgumentException.class, 
-				() -> new CleaningProgram("P1", "", Energy.of(10), Map.of()));
+	void testGivenEmptyNameWhenCreatingProgramThenThrowsIllegalArgumentException() {
+		Energy energy = Energy.of(10);
+		Map<CleaningProduct, Integer> requirements = Map.of();
+		assertThrows(
+				IllegalArgumentException.class, 
+				() -> new CleaningProgram(
+						"P1",
+						"",
+						energy,
+						requirements));
 	}
 	
 	@Test
-	void testGivenBlankNameWhenCreatingProgramThenTrowsIllegalArgumentException() {
-		assertThrows(IllegalArgumentException.class, 
-				() -> new CleaningProgram("P1", " ", Energy.of(10), Map.of()));
+	void testGivenBlankNameWhenCreatingProgramThenThrowsIllegalArgumentException() {
+		Energy energy = Energy.of(10);
+		assertThrows(
+				IllegalArgumentException.class, 
+				() -> new CleaningProgram(
+						"P1",
+						" ",
+						energy,
+						Map.of()));
 	}
 	
 	@Test
-	void testGivenNullEnergyWhenCreatingProgramThenTrowsNullPointerException() {
+	void testGivenNullEnergyWhenCreatingProgramThenThrowsNullPointerException() {
 		assertThrows(NullPointerException.class, 
 				() -> new CleaningProgram("P1", "Program", null, Map.of()));
 	}
 	
 	@Test
-	void testGivenNullRequirementsWhenCreatingProgramThenTrowsNullPointerException() {
-		assertThrows(NullPointerException.class, 
-				() -> new CleaningProgram("P1", "Program", Energy.of(10), null));
+	void testGivenNullRequirementsWhenCreatingProgramThenThrowsNullPointerException() {
+		Energy energy = Energy.of(10);
+		assertThrows(
+				NullPointerException.class, 
+				() -> new CleaningProgram(
+						"P1",
+						"Program",
+						energy,
+						null));
 	}
 	
 	@Test
-	void testGivenNegativeRequiredQuantityWhenCreatingProgramThenTrowsIllegalArgumentException() {
-		assertThrows(IllegalArgumentException.class, 
-				() -> new CleaningProgram("P1", "Program", Energy.of(10), Map.of(CleaningProduct.WATER, -1)));
+	void testGivenNegativeRequiredQuantityWhenCreatingProgramThenThrowsIllegalArgumentException() {
+		Energy energy = Energy.of(10);
+		Map<CleaningProduct, Integer> requirements = new EnumMap<>(CleaningProduct.class);
+	    requirements.put(CleaningProduct.WATER, -1);
+		assertThrows(
+				IllegalArgumentException.class, 
+				() -> new CleaningProgram(
+						"P1",
+						"Program",
+						energy,
+						requirements));
 	}
 	
 	@Test
@@ -90,7 +145,8 @@ public class CleaningProgramTest {
 	
 	@Test
 	void testGivenRequirementsMapWhenModifiedAfterConstructionThenProgramRequirementsRemainUnchanged() {
-	    Map<CleaningProduct, Integer> requirements = new HashMap<>();
+	    Map<CleaningProduct, Integer> requirements =
+	    		new EnumMap<>(CleaningProduct.class);
 	    requirements.put(CleaningProduct.WATER, 5);
 	    CleaningProgram program = new CleaningProgram("P1", "Program", Energy.of(10), requirements);
 	    requirements.put(CleaningProduct.WATER, 50);
@@ -100,7 +156,8 @@ public class CleaningProgramTest {
 	@Test
 	void testGivenRequirementsWhenTryingToModifyReturnedMapThenThrowsUnsupportedOperationException() {
 	    CleaningProgram program = new CleaningProgram("P1", "Program", Energy.of(10), Map.of());
-	    assertThrows(UnsupportedOperationException.class, () -> program.getRequirements().put(CleaningProduct.WATER, 1));
+	    assertThrows(UnsupportedOperationException.class,
+	    		() -> program.getRequirements().put(CleaningProduct.WATER, 1));
 	}
 	
 	@Test
@@ -110,6 +167,6 @@ public class CleaningProgramTest {
 	
 	@Test
 	void testGivenZeroRequiredQuantityWhenCreatingProgramThenCreatesProgram() {
-	    assertDoesNotThrow(() -> new CleaningProgram("P1", "Program", Energy.of(10), Map.of(CleaningProduct.WATER, 1)));
+	    assertDoesNotThrow(() -> new CleaningProgram("P1", "Program", Energy.of(10), Map.of(CleaningProduct.WATER, 0)));
 	}
 }
