@@ -1,6 +1,8 @@
 package com.calso.robot.application.usecases;
 
+import java.util.EnumMap;
 import java.util.Map;
+
 import com.calso.robot.domain.model.CleaningProduct;
 import com.calso.robot.domain.repositories.ICleaningInventory;
 
@@ -9,20 +11,45 @@ import com.calso.robot.domain.repositories.ICleaningInventory;
  * La implementación debe mantenerse exclusivamente bajo src/test/java.
  */
 public final class StubCleaningInventory implements ICleaningInventory {
+	
+	private Map<CleaningProduct, Integer> initialStock = new EnumMap<>(CleaningProduct.class); ;
 
     public StubCleaningInventory(Map<CleaningProduct, Integer> initialStock) {
-        // TODO: validar cantidades, copiar existencias y conservar estado propio.
+    	if(initialStock == null)
+    		throw new NullPointerException("El stock inicial es nulo.");
+    	
+    	for (var entry : initialStock.entrySet()) {
+    	    CleaningProduct product = entry.getKey();
+    	    Integer quantity = entry.getValue();
+    	    
+    	    if(product == null || quantity == null || quantity < 0)
+    	    	throw new IllegalArgumentException("Los valores son nulos o no válidos.");
+    	    
+    	    this.initialStock.put(product, quantity);
+    	}
     }
 
     @Override
     public int available(CleaningProduct product) {
-        // TODO: devolver existencia actual o cero si el producto no está presente.
-        throw new UnsupportedOperationException("Pendiente de implementar");
+        if(product == null)
+        	throw new NullPointerException("El producto es nulo.");
+    	
+        Integer quantity = initialStock.get(product);
+     
+        if(quantity == null)
+        	return 0;
+        
+        return quantity;
     }
 
     @Override
     public void consume(CleaningProduct product, int quantity) {
-        // TODO: validar y descontar sin permitir existencias negativas.
-        throw new UnsupportedOperationException("Pendiente de implementar");
+    	int stock = available(product);
+    	if(quantity > stock|| quantity < 0)
+    		throw new IllegalArgumentException("La cantidad no es válida");
+    	
+    	int stockNuevo = stock - quantity;
+    	
+    	initialStock.put(product, stockNuevo);
     }
 }
