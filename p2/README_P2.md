@@ -15,9 +15,18 @@
 **Ramas utilizadas**
 - `dominio-comparador`
 
+
+**Paula Mei Zaragoza Villegas**
+- Diseño e implementación de pruebas unitarias para corrección de los defectos detectados en las siguientes clases:
+    - StubCleaningInventory
+    - ExecuteCleaningProgramUseCase
+
+**Ramas utilizadas**
+- `suplantador-usos`
+
 **Pull Requests**
 
----
+Merge #1 de la rama `dominio-comparador`: `925705f`
 
 ### Casos de prueba
 
