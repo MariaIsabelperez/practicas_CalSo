@@ -22,7 +22,7 @@ public final class CleaningProgram {
         
         this.id = id; 
         this.name = name; 
-        this.requirements = requirements;
+        this.requirements = Map.copyOf(requirements);	//Copia defensiva para evitar modificaciones externas del mapa original
     }
     
     public String getId() { 
@@ -43,11 +43,13 @@ public final class CleaningProgram {
     
     @Override
     public boolean equals(Object other) {
-        return other instanceof CleaningProgram p && name.equals(p.name);
+    	//La igualdad debe basarse exclusivamente en el identificador del programa
+        return other instanceof CleaningProgram p && id.equals(p.id);
     }
     
     @Override
-    public int hashCode() { 
-        return name.hashCode(); 
+    public int hashCode() {
+    	//Consistente con equals()
+        return id.hashCode(); 
     }
 }
