@@ -215,7 +215,7 @@ Se renombra cumpliendo la ER para el nombrado de funciones.
 
 **Localización:** `src/.../Punto.java`, línea 52
 **Responsable:** Paula Mei Zaragoza Villegas
-**Commit:** `None`
+**Commit:** `f1a2b94`
 
 **Problema detectado**
 
@@ -396,7 +396,7 @@ Se modificó la visibilidad del método distancia() a public, permitiendo su uti
 | 9 | `java:S101` | Paula Mei Zaragoza Villegas | `28272a4` | Resuelta |
 | 10 | `java:S115` | Paula Mei Zaragoza Villegas | `92ef493` | Resuelta |
 | 11 | `java:S100` | Paula Mei Zaragoza Villegas | `44a8bc1` | Resuelta |
-| 12 | `java:S100` | Paula Mei Zaragoza Villegas | `None` | Resuelta |
+| 12 | `java:S100` | Paula Mei Zaragoza Villegas | `f1a2b94` | Resuelta |
 | 13 | `java:S125` | María Isabel Pérez Lisón | `9ca839a` | Resuelta |
 | 14 | `java:S1197` | María Isabel Pérez Lisón | `8ebe6e5` | Resuelta |
 | 15 | `java:S1197` | María Isabel Pérez Lisón | `8ebe6e5` | Resuelta |
