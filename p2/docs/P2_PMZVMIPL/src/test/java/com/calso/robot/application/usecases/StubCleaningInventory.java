@@ -12,7 +12,13 @@ import com.calso.robot.domain.repositories.ICleaningInventory;
  */
 public final class StubCleaningInventory implements ICleaningInventory {
 	
-	private Map<CleaningProduct, Integer> initialStock = new EnumMap<>(CleaningProduct.class); ;
+	private Map<CleaningProduct, Integer> initialStock = new EnumMap<>(CleaningProduct.class);
+	
+	private int numCallsConsume = 0;
+	
+	public int getNumCallsConsume() {
+		return numCallsConsume;
+	}
 
     public StubCleaningInventory(Map<CleaningProduct, Integer> initialStock) {
     	if(initialStock == null)
@@ -49,6 +55,7 @@ public final class StubCleaningInventory implements ICleaningInventory {
     		throw new IllegalArgumentException("La cantidad no es válida");
     	
     	int stockNuevo = stock - quantity;
+    	numCallsConsume++;
     	
     	initialStock.put(product, stockNuevo);
     }
