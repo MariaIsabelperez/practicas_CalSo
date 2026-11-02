@@ -104,6 +104,7 @@ class ExecuteCleaningProgramUseCaseTest {
 		ExecutionResult result = useCase.execute(programRequiringNoProducts);
 		
 		assertTrue(result.executed());
+		assertEquals(0, stock.getNumCallsConsume());
 		assertTrue(result.missingProducts().isEmpty());
 		assertEquals(1, stock.available(CleaningProduct.WATER));
 	}
@@ -119,6 +120,7 @@ class ExecuteCleaningProgramUseCaseTest {
 		ExecutionResult result = useCase.execute(programRequiringNoProducts);
 		
 		assertTrue(result.executed());
+		assertEquals(0, stock.getNumCallsConsume());
 		assertTrue(result.missingProducts().isEmpty());
 		assertEquals(1, stock.available(CleaningProduct.WATER));
 	}
@@ -139,7 +141,7 @@ class ExecuteCleaningProgramUseCaseTest {
 		ExecutionResult resultSecond = useCase.execute(program);
 		
 		assertFalse(resultSecond.executed());
-		assertEquals(1, stock.getNumCallsConsume());
+		assertEquals(2, stock.getNumCallsConsume());
 		assertEquals(Map.of(CleaningProduct.WATER, 1, CleaningProduct.WAX, 2), resultSecond.missingProducts());
 		assertEquals(0, stock.available(CleaningProduct.WATER));
 		assertEquals(0, stock.available(CleaningProduct.WAX));
