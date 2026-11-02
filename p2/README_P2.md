@@ -59,7 +59,15 @@ Merge #1 de la rama `dominio-comparador`: `925705f`
 | CP-25 | CleaningProgramByEnergyComparator | Orden ascendente por energía | testGivenProgramsWithEnergies10And20WhenComparingThenOrdersAscendingByEnergy |
 | CP-26 | CleaningProgramByEnergyComparator | En caso de empate, orden por id | testGivenProgramsWithSameEnergyAndIdsP1AndP2WhenComparingThenOrdersById |
 | CP-27 | CleaningProgramByEnergyComparator | Si energía e id coinciden devuelve 0 | testGivenProgramsWithSameEnergyAndSameIdWhenComparingThenReturnsZero |
-
+| CP-28 | ExecuteCleaningProgramUseCase | Si se le pasa un inventario nulo salta una excepción NullPointerException | testGivenNullInventoryWhenCreatingUseCaseThenThrowsNullPointerException |
+| CP-29 | ExecuteCleaningProgramUseCase | Si se le pasa un programa nulo salta una excepción NullPointerException | testGivenNullProgramWhenExecutingUseCaseThenThrowsNullPointerException |
+| CP-30 | ExecuteCleaningProgramUseCase | Si se intenta ejecutar un programa que requiere de un stock no disponible de un producto que faltan, no ejecuta el programa y no realiza el descuento de productos | testGiven3WaterAnd1WaxStockWhenExecutingProgramRequiring1WaterAnd2WaxThenStockRemainsUnchangedAndMissing1Wax |
+| CP-31 | ExecuteCleaningProgramUseCase | Si se intenta ejecutar un programa que requiere de productos que no existen en el inventario y devuelve el mapa con los productos que falta y sus cantidades | testGiven1SoapStockWhenExecutingProgramRequiring1WaterAnd2WaxThenStockRemainsUnchangedAndMissing1WaterAnd2Wax |
+| CP-32 | ExecuteCleaningProgramUseCase | Si se intenta ejecutar un programa que tiene stock disponible, debe ejecutarse y descontar los productos correctamente | testGiven3WaterAnd3WaxStockWhenExecutingProgramRequiring1WaterAnd2WaxThenWaterStockBecomes2AndWaxStockBecomes1AndSucceeded |
+| CP-33 | ExecuteCleaningProgramUseCase | Si se intenta ejecutar un programa que tiene las cantidades de stock exactas se ejecuta y se reduce el stock a 0 de los productos | testGiven1WaterAnd2WaxStockWhenExecutingProgramRequiring1WaterAnd2WaxThenWaterStockBecomes0AndWaxStockBecomes0AndSucceeded |
+| CP-34 | ExecuteCleaningProgramUseCase | Si se intenta ejecutar un programa cuyos requisitos son un mapa vacío, debe ejecutarse y no producir ningún descuento | testGiven1WaterAnd2WaxStockWhenExecutingProgramRequiringNoProductsThenStockRemainsUnchangedAndSucceeded |
+| CP-35 | ExecuteCleaningProgramUseCase | Si se intenta ejecutar un programa cuyos requisitos son 0 de un producto, se debe ejecutar y no debe producirse ningún descuento | testGiven1WaterAnd2WaxStockWhenExecutingProgramRequiring0WaterThenStockRemainsUnchangedAndSucceeded |
+| CP-36 | ExecuteCleaningProgramUseCase | Si comprueba la mutabilidad del stock entre varias ejecuciones distintas de un programa, para ello se ejecuta el programa 1 vez que reduce el stock a 0 y la segunda vez debe no ejecutarse el programa| testGiven1WaterAnd2WaxStockWhenExecutingTwiceProgramRequiring1WaterAnd2WaxThenFirstSuceededAndSecondRequires1WaterAnd2Wax |
 ---
 
 ### Defectos detectados y corregidos
@@ -75,12 +83,15 @@ Merge #1 de la rama `dominio-comparador`: `925705f`
 | D-07 | testGivenRequirementsMapWhenModifiedAfterConstructionThenProgramRequirementsRemainUnchanged | El programa compartía la referencia del mapa original | Se añadió copia defensiva mediante Map.copyOf() | 5619b0d |
 | D-08 | testGivenRequirementsWhenTryingToModifyReturnedMapThenThrowsUnsupportedOperationException | El mapa obtenido podía modificarse | Se devolvió un mapa inmodificable | 5619b0d |
 | D-09 | testGivenProgramsWithEnergies10And20WhenComparingThenOrdersAscendingByEnergy | El comparador ordenaba de forma descendente | Se corrigió el orden de comparación de energías | ef4ee59 |
-
+| D-10 | testGiven3WaterAnd1WaxStockWhenExecutingProgramRequiring1WaterAnd2WaxThenStockRemainsUnchangedAndMissing1Wax | Se realizaba la llamada a consume aunque no hubiera stock total disponible | Se corrigió el orden de comprobación y consumo para solucionarlo | c28e232 |
+| D-11 | testGiven1WaterAnd2WaxStockWhenExecutingProgramRequiring1WaterAnd2WaxThenWaterStockBecomes0AndWaxStockBecomes0AndSucceeded | Si el stock era exacto no se realizaba la ejecución del programa ya que se comprobaba si available <= required | Se modifica la validación de stock por available < required | c28e232 |
+| D-12 | testGiven1WaterAnd2WaxStockWhenExecutingProgramRequiring0WaterThenStockRemainsUnchangedAndSucceeded | Si se requiere 0 de un producto, se produce el descuento de menos 0 | Se realiza una comprobación antes de llamar a consume requirement.getValue() > 0 | c28e232 |
+| D-13 | testGiven3WaterAnd1WaxStockWhenExecutingProgramRequiring1WaterAnd2WaxThenStockRemainsUnchangedAndMissing1Wax | Si falta de un producto en concreto se agrega al mapa missing required, ese valor no es corresto | Se cambia el valor que se agrega al mapa de missing por required - available | c28e232 |
 ---
 
 ### Suplantador y desarrollo incremental
 
-*Explicar brevemente.*
+Con la creación del suplantador estamos sustituyendo la implementación concreta del adaptador (en este caso la base de datos o el repositorio). Gracias a que dependemos de una interfaz y no de una clase concreta, da igual qué objeto se esté usando mientras cumpla dicho contrato, que es lo que ocurre con el suplantador. Esto nos ayuda a separar el desarrollo del testing, permitiéndonos probar el núcleo de la aplicación sin necesidad de tener toda la infraestructura desarrollada.
 
 ### Indicadores de calidad
 
