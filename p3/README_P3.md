@@ -82,6 +82,14 @@ Cuando la condición `youngest == null` toma el valor verdadero, Java realiza ev
 `fighter.birthDate().isBefore(youngest.birthDate())`.  
 Por ello se han diseñado casos que permiten observar la evaluación verdadera y falsa de ambas condiciones, así como la situación en la que la segunda condición no llega a evaluarse.
 
+### Implementación con JUnit
+| Método | Nodo o camino identificado | Datos de entrada y fecha | Resultado esperado según especificación | Nombre del test | Resultado ejecución |
+|---|---|---|---|---|---|
+| findYoungestFighter | C6: varios fighters válidos y comparación de fechas de nacimiento | fighters=[fighter1, fighter2], referenceDate=2026-10-20 | Devuelve el fighter con la fecha de nacimiento más reciente | testGivenTwoFightersWhenFindingYoungestFighterThenReturnsYoungestFighter | Fallo. Se detecta defecto |
+
+
+---
+
 ## Pruebas de caja negra
 
 ### Clases de equivalencia
