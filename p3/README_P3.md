@@ -13,8 +13,16 @@
 
 ## Pruebas de caja blanca 
 
+### Grafos de flujo
+#### ReservationDiscountService.findYoungestFighter
+![Grafo findYoungestFighter](imagenes/findYoungestFighter.png)
+
+#### ReservationDiscountService.calculateBestDiscount
+![Grafo calculateBestDiscount](imagenes/calculateBestDiscount.png)
+
 ### Caminos independientes 
 | Método | Nodo o camino identificado | Datos de entrada y fecha | Resultado esperado según especificación | Nombre del test | Resultado ejecución |
+| findYoungestFighter |---|---|---|---|---|
 |---|---|---|---|---|---|
 
 ### Cobertura de condiciones seleccionadas
