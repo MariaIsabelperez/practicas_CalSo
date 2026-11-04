@@ -57,6 +57,18 @@ La complejidad ciclomática del método es: V(G) = 12
 | findYoungestFighter | C4: fighter nulo dentro de la lista | fighters=[null], referenceDate=2026-10-20 | NullPointerException("Null fighter") | Pendiente | Pendiente |
 | findYoungestFighter | C5: un único fighter válido | fighters=[fighter1], referenceDate=2026-10-20 | Optional.of(fighter1) | Pendiente | Pendiente |
 | findYoungestFighter | C6: varios luchadores válidos y comparación de fechas de nacimiento | fighters=[fighter1, fighter2], referenceDate=2026-10-20 | Devuelve el fighter con la fecha de nacimiento más reciente (según la especificación, el más jóven) | Pendiente | Pendiente |
+| calculateBestDiscount | C1: fighters nulo | fighters=null, trainingDate=2026-10-20 | NullPointerException("Fighters are required") | Pendiente | Pendiente |
+| calculateBestDiscount | C2: trainingDate nula | fighters=[], trainingDate=null | NullPointerException("Training date is required") | Pendiente | Pendiente |
+| calculateBestDiscount | C3: lista vacía | fighters=[], trainingDate=2026-10-20 | Discount(0) | Pendiente | Pendiente |
+| calculateBestDiscount | C4: fighter más joven con menos de 18 años | lista con un fighter de 17 años, trainingDate=2026-10-20 | Discount(15) | Pendiente | Pendiente |
+| calculateBestDiscount | C5: fighter más joven con 18 años o más | lista con fighters adultos | Discount(0) | Pendiente | Pendiente |
+| calculateBestDiscount | C6: fighter nulo en la lista | fighters=[null], trainingDate=2026-10-20 | NullPointerException("Null fighter") | Pendiente | Pendiente |
+| calculateBestDiscount | C7: desempleo menor de 1 año | fighter con desempleo de menos de 1 año completo | Discount(0) | Pendiente | Pendiente |
+| calculateBestDiscount | C8: desempleo de 1 año completo | fighter con desempleo de exactamente 1 año | Discount(10) | Pendiente | Pendiente |
+| calculateBestDiscount | C9: desempleo de 2 años completos | fighter con desempleo de exactamente 2 años | Discount(20) | Pendiente | Pendiente |
+| calculateBestDiscount | C10: desempleo de 3 años completos o más | fighter con desempleo >= 3 años | Discount(30) | Pendiente | Pendiente |
+| calculateBestDiscount | C11: concurren descuento juvenil y descuento por desempleo | fighter menor de 18 años y fighter con desempleo >= 3 años | Discount(30), aplicando únicamente el mayor descuento | Pendiente | Pendiente |
+| calculateBestDiscount | C12: descuento calculado no supera el actual | bestPercentage ya contiene un valor superior | Se conserva el porcentaje mayor | Pendiente | Pendiente |
 
 ### Cobertura de condiciones seleccionadas
 | Condicion atomica | Caso que evalua verdadero | Caso que evalua falso | Casos adicionales | Justificacion si no es factible |
