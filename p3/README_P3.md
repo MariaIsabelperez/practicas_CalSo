@@ -82,11 +82,31 @@ Cuando la condición `youngest == null` toma el valor verdadero, Java realiza ev
 `fighter.birthDate().isBefore(youngest.birthDate())`.  
 Por ello se han diseñado casos que permiten observar la evaluación verdadera y falsa de ambas condiciones, así como la situación en la que la segunda condición no llega a evaluarse.
 
-### Implementación con JUnit
+### Implementación y ejecución de pruebas JUnit
 | Método | Nodo o camino identificado | Datos de entrada y fecha | Resultado esperado según especificación | Nombre del test | Resultado ejecución |
 |---|---|---|---|---|---|
+| findYoungestFighter | C1: fighters nulo | fighters=null, referenceDate=2026-10-20 | NullPointerException("Fighters are required") | testGivenNullFightersWhenFindingYoungestFighterThenThrowsNullPointerException | Superado |
+| findYoungestFighter | C2: referenceDate nula | fighters=[], referenceDate=null | NullPointerException("Reference date is required") | testGivenNullReferenceDateWhenFindingYoungestFighterThenThrowsNullPointerException | Superado |
+| findYoungestFighter | C3: lista vacía | fighters=[], referenceDate=2026-10-20 | Optional.empty() | testGivenEmptyFightersListWhenFindingYoungestFighterThenReturnsEmptyOptional | Superado |
+| findYoungestFighter | C4: fighter nulo dentro de la lista | fighters=[null], referenceDate=2026-10-20 | NullPointerException("Null fighter") | testGivenNullFighterInListWhenFindingYoungestFighterThenThrowsNullPointerException | Superado |
+| findYoungestFighter | C5: un único fighter válido | fighters=[fighter1], referenceDate=2026-10-20 | Optional.of(fighter1) | testGivenSingleFighterWhenFindingYoungestFighterThenReturnsThatFighter | Superado |
 | findYoungestFighter | C6: varios fighters válidos y comparación de fechas de nacimiento | fighters=[fighter1, fighter2], referenceDate=2026-10-20 | Devuelve el fighter con la fecha de nacimiento más reciente | testGivenTwoFightersWhenFindingYoungestFighterThenReturnsYoungestFighter | Fallo. Se detecta defecto |
 
+#### Regresión tras la corrección
+Se sustituyó:  
+```java
+fighter.birthDate().isBefore(youngest.birthDate())
+```
+por  
+```java
+fighter.birthDate().isAfter(youngest.birthDate())
+```  
+
+La especificación establece que el método debe devolver el luchador con la fecha de nacimiento más reciente (el más joven). Sin embargo, la implementación original utilizaba isBefore(), seleccionando al luchador con la fecha de nacimiento más antigua.  
+Tras la corrección, se ejecutó nuevamente el test:
+testGivenTwoFightersWhenFindingYoungestFighterThenReturnsYoungestFighter, 
+obteniéndose el resultado esperado.  
+Además, se repitió la ejecución completa de las pruebas de 'findYoungestFighter', verificando que no se introdujeron regresiones y que todos los casos continuaban superándose correctamente.
 
 ---
 
