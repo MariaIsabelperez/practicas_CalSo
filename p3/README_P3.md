@@ -73,6 +73,13 @@ La complejidad ciclomática del método es: V(G) = 12
 ### Cobertura de condiciones seleccionadas
 | Condicion atomica | Caso que evalua verdadero | Caso que evalua falso | Casos adicionales | Justificacion si no es factible |
 |---|---|---|---|---|
+| `youngest==null` | Primer fighter de una lista no vacía | Segundo o posteriores fighters de la lista | Ninguno | Factible |
+| fighter.birthDate().isBefore(youngest.birthDate()) | Fighter con fecha de nacimiento anterior a la almacenada en `youngest` | Fighter con fecha de nacimiento igual o posterior a la almacenada en `youngest` | Ninguno | Factible |
+| Cortocircuito del operador `||` | Cuando `youngest==null` es verdadero | No aplica | Lista no vacía con un único fighter | La segunda condición no se evalúa debido al cortocircuito del operador `||` |
+
+La decisión analizada está formada por dos condiciones atómicas unidas mediante el operador lógico `||`.  
+Cuando la condición `youngest == null` toma el valor verdadero, Java realiza evaluación por cortocircuito y no evalúa la segunda condición fighter.birthDate().isBefore(youngest.birthDate())`).  
+Por ello se han diseñado casos que permiten observar la evaluación verdadera y falsa de ambas condiciones, así como la situación en que la segunda condición no llega a evaluarse.
 
 ## Pruebas de caja negra
 
