@@ -51,12 +51,12 @@ La complejidad ciclomática del método es: V(G) = 12
 ### Caminos independientes 
 | Método | Nodo o camino identificado | Datos de entrada y fecha | Resultado esperado según especificación | Nombre del test | Resultado ejecución |
 |---|---|---|---|---|---|
-| findYoungestFighter | C1: fighters nulo | fighter=null, referenceDate=2026-10-20 | NullPointerException("Fighters are required") | Pendiente | Pendiente |
+| findYoungestFighter | C1: fighters nulo | fighters=null, referenceDate=2026-10-20 | NullPointerException("Fighters are required") | Pendiente | Pendiente |
 | findYoungestFighter | C2: referenceDate nula | fighters=lista vacía, referenceDate=null | NullPointerException("Reference date is required") | Pendiente | Pendiente |
 | findYoungestFighter | C3: lista vacía | fighters=[], referenceDate=2026-10-20 | Optional.empty() | Pendiente | Pendiente |
 | findYoungestFighter | C4: fighter nulo dentro de la lista | fighters=[null], referenceDate=2026-10-20 | NullPointerException("Null fighter") | Pendiente | Pendiente |
 | findYoungestFighter | C5: un único fighter válido | fighters=[fighter1], referenceDate=2026-10-20 | Optional.of(fighter1) | Pendiente | Pendiente |
-| findYoungestFighter | C6: varios luchadores válidos y comparación de fechas de nacimiento | fighters=[fighter1, fighter2], referenceDate=2026-10-20 | Devuelve el fighter con la fecha de nacimiento más reciente (según la especificación, el más jóven) | Pendiente | Pendiente |
+| findYoungestFighter | C6: varios luchadores válidos y comparación de fechas de nacimiento | fighters=[fighter1, fighter2], referenceDate=2026-10-20 | Devuelve el fighter con la fecha de nacimiento más reciente (según la especificación, el más joven) | Pendiente | Pendiente |
 | calculateBestDiscount | C1: fighters nulo | fighters=null, trainingDate=2026-10-20 | NullPointerException("Fighters are required") | Pendiente | Pendiente |
 | calculateBestDiscount | C2: trainingDate nula | fighters=[], trainingDate=null | NullPointerException("Training date is required") | Pendiente | Pendiente |
 | calculateBestDiscount | C3: lista vacía | fighters=[], trainingDate=2026-10-20 | Discount(0) | Pendiente | Pendiente |
@@ -75,11 +75,12 @@ La complejidad ciclomática del método es: V(G) = 12
 |---|---|---|---|---|
 | `youngest==null` | Primer fighter de una lista no vacía | Segundo o posteriores fighters de la lista | Ninguno | Factible |
 | `fighter.birthDate().isBefore(youngest.birthDate())` | Fighter con fecha de nacimiento anterior a la almacenada en `youngest` | Fighter con fecha de nacimiento igual o posterior a la almacenada en `youngest` | Ninguno | Factible |
-| Cortocircuito del operador `\|\|` | Cuando `youngest==null` es verdadero | No aplica | Lista no vacía con un único fighter | La segunda condición no se evalúa debido al cortocircuito del operador `||` |
+| Cortocircuito del operador `\|\|` | Cuando `youngest==null` es verdadero | No aplica | Lista no vacía con un único fighter | La segunda condición no se evalúa debido al cortocircuito del operador `\|\|` |
 
 La decisión analizada está formada por dos condiciones atómicas unidas mediante el operador lógico `||`.  
-Cuando la condición `youngest == null` toma el valor verdadero, Java realiza evaluación por cortocircuito y no evalúa la segunda condición fighter.birthDate().isBefore(youngest.birthDate())`).  
-Por ello se han diseñado casos que permiten observar la evaluación verdadera y falsa de ambas condiciones, así como la situación en que la segunda condición no llega a evaluarse.
+Cuando la condición `youngest == null` toma el valor verdadero, Java realiza evaluación por cortocircuito y no evalúa la segunda condición
+`fighter.birthDate().isBefore(youngest.birthDate())`.  
+Por ello se han diseñado casos que permiten observar la evaluación verdadera y falsa de ambas condiciones, así como la situación en la que la segunda condición no llega a evaluarse.
 
 ## Pruebas de caja negra
 
