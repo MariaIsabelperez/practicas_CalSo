@@ -24,12 +24,12 @@
 ### Complejidad ciclomática
 #### ReservationDiscountService.findYoungestFighter
 **Fórmula 1**
-V(G) = P+1 siendo P=5 --> V(G) = 6 
+V(G) = P+1 siendo P=5 --> V(G) = 6  
 **Fórmula 2**
 El grafo contiene múltiples salidas excepcionales y un retorno normal. 
-Para aplicar formalmente la expresión V(G)=E-N+2 debe considerarse un nodo final común al que converjan todas las terminaciones del método. 
+Para aplicar formalmente la expresión V(G)=E-N+2 debe considerarse un nodo final común al que converjan todas las terminaciones del método.  
 **Fórmula 3**
-V(G) = R = 6 
+V(G) = R = 6  
 
 **Conclusión**
 La complejidad ciclomática del método es: V(G) = 6
@@ -37,12 +37,12 @@ La complejidad ciclomática del método es: V(G) = 6
 
 #### ReservationDiscountService.calculateBestDiscount
 **Fórmula 1**
-V(G) = P+1 siendo P=11 --> V(G) = 12 
+V(G) = P+1 siendo P=11 --> V(G) = 12  
 **Fórmula 2**
 El grafo contiene múltiples salidas excepcionales y un retorno normal. 
-Para aplicar formalmente la expresión V(G)=E-N+2 debe considerarse un nodo final común al que converjan todas las terminaciones del método. 
+Para aplicar formalmente la expresión V(G)=E-N+2 debe considerarse un nodo final común al que converjan todas las terminaciones del método.  
 **Fórmula 3**
-El número de regiones debe contabilizarse sobre el grafo definitivo considerando el nodo final común. 
+El número de regiones debe contabilizarse sobre el grafo definitivo considerando el nodo final común.  
 
 **Conclusión**
 La complejidad ciclomática del método es: V(G) = 12
