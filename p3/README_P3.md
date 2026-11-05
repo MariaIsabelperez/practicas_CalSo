@@ -49,7 +49,6 @@ El número de regiones debe contabilizarse sobre el grafo definitivo considerand
 **Conclusión**
 La complejidad ciclomática del método es: V(G) = 12
 
----
 
 ### Caminos independientes 
 | Método | Nodo o camino identificado | Datos de entrada y fecha | Resultado esperado según especificación | Nombre del test | Resultado ejecución |
@@ -73,7 +72,6 @@ La complejidad ciclomática del método es: V(G) = 12
 | calculateBestDiscount | C11: concurren descuento juvenil y descuento por desempleo | fighter menor de 18 años y fighter con desempleo >= 3 años | Discount(30), aplicando únicamente el mayor descuento | testGivenYouthAndUnemploymentDiscountWhenCalculatingBestDiscountThenReturnsGreatestDiscount | Superado |
 | calculateBestDiscount | C12: descuento calculado no supera el actual | bestPercentage ya contiene un valor superior | Se conserva el porcentaje mayor | Cubierto por los casos C10 y C11 | Superado |
 
----
 
 ### Cobertura de condiciones seleccionadas
 | Condicion atomica | Caso que evalua verdadero | Caso que evalua falso | Casos adicionales | Justificacion si no es factible |
@@ -129,6 +127,15 @@ Asimismo, se repitió la batería completa de pruebas, verificando que no se int
 ### Clases de equivalencia
 | Código de clase | Variable | Condición de pertenencia | Válida / inválida | Comportamiento exigido |
 |---|---|---|---|---|
+| CE1 | teamId | Identificador de equipo existente | Válida | Continúa el cálculo del coste |
+| CE2 | teamId | Identificador vacío | Inválida | "Team id is required" |
+| CE3 | teamId | Identificador inexistente | Inválida | "Team does not exist" |
+| CE4 | dojoId | Identificador de dojo existente | Válida | Continúa el cálculo del coste |
+| CE5 | dojoId | Identificador vacío | Inválida | "Dojo id is required" |
+| CE6 | dojoId | Identificador inexistente | Inválida | "Dojo does not exist" |
+| CE7 | trainingDate | Fecha futura | Válida | Continúa el cálculo del coste |
+| CE8 | trainingDate | Fecha actual o anterior a la fecha actual del sistema | Inválida | "Training date must be in the future" |
+
 
 ### Casos
 | ID del caso | Clases cubiertas | Equipo/dojo/fecha o URL concreta | Estado inicial | Resultado único esperado | Nombre prueba |
