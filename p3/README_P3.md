@@ -144,7 +144,11 @@ Asimismo, se repitió la batería completa de pruebas, verificando que no se int
 ### Valores límite
 | Variable | Valor del límite | Valor elegido | Expectativas |
 |---|---|---|---|
+| trainingDate | Día anterior al límite | 2026-10-19 | Error: "Training date must be in the future" |
+| trainingDate | Valor límite | 2026-10-20 | Error: "Training date must be in the future" |
+| trainingDate | Día posterior al límite | 2026-10-21 | Fecha válida y cálculo del coste correcto |
 
+---
 
 ## Material adicional
 
