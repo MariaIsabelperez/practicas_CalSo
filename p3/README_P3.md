@@ -21,6 +21,8 @@
 #### ReservationDiscountService.calculateBestDiscount
 ![Grafo calculateBestDiscount](imagenes/calculateBestDiscount.png)
 
+---
+
 ### Complejidad ciclomática
 #### ReservationDiscountService.findYoungestFighter
 **Fórmula 1**  
@@ -47,28 +49,31 @@ El número de regiones debe contabilizarse sobre el grafo definitivo considerand
 **Conclusión**
 La complejidad ciclomática del método es: V(G) = 12
 
+---
 
 ### Caminos independientes 
 | Método | Nodo o camino identificado | Datos de entrada y fecha | Resultado esperado según especificación | Nombre del test | Resultado ejecución |
 |---|---|---|---|---|---|
-| findYoungestFighter | C1: fighters nulo | fighters=null, referenceDate=2026-10-20 | NullPointerException("Fighters are required") | Pendiente | Pendiente |
-| findYoungestFighter | C2: referenceDate nula | fighters=lista vacía, referenceDate=null | NullPointerException("Reference date is required") | Pendiente | Pendiente |
-| findYoungestFighter | C3: lista vacía | fighters=[], referenceDate=2026-10-20 | Optional.empty() | Pendiente | Pendiente |
-| findYoungestFighter | C4: fighter nulo dentro de la lista | fighters=[null], referenceDate=2026-10-20 | NullPointerException("Null fighter") | Pendiente | Pendiente |
-| findYoungestFighter | C5: un único fighter válido | fighters=[fighter1], referenceDate=2026-10-20 | Optional.of(fighter1) | Pendiente | Pendiente |
-| findYoungestFighter | C6: varios luchadores válidos y comparación de fechas de nacimiento | fighters=[fighter1, fighter2], referenceDate=2026-10-20 | Devuelve el fighter con la fecha de nacimiento más reciente (según la especificación, el más joven) | Pendiente | Pendiente |
-| calculateBestDiscount | C1: fighters nulo | fighters=null, trainingDate=2026-10-20 | NullPointerException("Fighters are required") | Pendiente | Pendiente |
-| calculateBestDiscount | C2: trainingDate nula | fighters=[], trainingDate=null | NullPointerException("Training date is required") | Pendiente | Pendiente |
-| calculateBestDiscount | C3: lista vacía | fighters=[], trainingDate=2026-10-20 | Discount(0) | Pendiente | Pendiente |
-| calculateBestDiscount | C4: fighter más joven con menos de 18 años | lista con un fighter de 17 años, trainingDate=2026-10-20 | Discount(15) | Pendiente | Pendiente |
-| calculateBestDiscount | C5: fighter más joven con 18 años o más | lista con fighters adultos | Discount(0) | Pendiente | Pendiente |
-| calculateBestDiscount | C6: fighter nulo en la lista | fighters=[null], trainingDate=2026-10-20 | NullPointerException("Null fighter") | Pendiente | Pendiente |
-| calculateBestDiscount | C7: desempleo menor de 1 año | fighter con desempleo de menos de 1 año completo | Discount(0) | Pendiente | Pendiente |
-| calculateBestDiscount | C8: desempleo de 1 año completo | fighter con desempleo de exactamente 1 año | Discount(10) | Pendiente | Pendiente |
-| calculateBestDiscount | C9: desempleo de 2 años completos | fighter con desempleo de exactamente 2 años | Discount(20) | Pendiente | Pendiente |
-| calculateBestDiscount | C10: desempleo de 3 años completos o más | fighter con desempleo >= 3 años | Discount(30) | Pendiente | Pendiente |
-| calculateBestDiscount | C11: concurren descuento juvenil y descuento por desempleo | fighter menor de 18 años y fighter con desempleo >= 3 años | Discount(30), aplicando únicamente el mayor descuento | Pendiente | Pendiente |
-| calculateBestDiscount | C12: descuento calculado no supera el actual | bestPercentage ya contiene un valor superior | Se conserva el porcentaje mayor | Pendiente | Pendiente |
+| findYoungestFighter | C1: fighters nulo | fighters=null, referenceDate=2026-10-20 | NullPointerException("Fighters are required") | testGivenNullFightersWhenFindingYoungestFighterThenThrowsNullPointerException | Superado |
+| findYoungestFighter | C2: referenceDate nula | fighters=lista vacía, referenceDate=null | NullPointerException("Reference date is required") | testGivenNullReferenceDateWhenFindingYoungestFighterThenThrowsNullPointerException | Superado |
+| findYoungestFighter | C3: lista vacía | fighters=[], referenceDate=2026-10-20 | Optional.empty() | testGivenEmptyFightersListWhenFindingYoungestFighterThenReturnsEmptyOptional | Superado |
+| findYoungestFighter | C4: fighter nulo dentro de la lista | fighters=[null], referenceDate=2026-10-20 | NullPointerException("Null fighter") | testGivenNullFighterInListWhenFindingYoungestFighterThenThrowsNullPointerException | Superado |
+| findYoungestFighter | C5: un único fighter válido | fighters=[fighter1], referenceDate=2026-10-20 | Optional.of(fighter1) | testGivenSingleFighterWhenFindingYoungestFighterThenReturnsThatFighter | Superado |
+| findYoungestFighter | C6: varios luchadores válidos y comparación de fechas de nacimiento | fighters=[fighter1, fighter2], referenceDate=2026-10-20 | Devuelve el fighter con la fecha de nacimiento más reciente (según la especificación, el más joven) | testGivenTwoFightersWhenFindingYoungestFighterThenReturnsYoungestFighter | Fallo inicial. Superado tras la corrección |
+| calculateBestDiscount | C1: fighters nulo | fighters=null, trainingDate=2026-10-20 | NullPointerException("Fighters are required") | testGivenNullFightersWhenCalculatingBestDiscountThenThrowsNullPointerException | Superado |
+| calculateBestDiscount | C2: trainingDate nula | fighters=[], trainingDate=null | NullPointerException("Training date is required") | testGivenNullTrainingDateWhenCalculatingBestDiscountThenThrowsNullPointerException | Superado |
+| calculateBestDiscount | C3: lista vacía | fighters=[], trainingDate=2026-10-20 | Discount(0) | testGivenEmptyFightersListWhenCalculatingBestDiscountThenReturnsZeroDiscount | Superado |
+| calculateBestDiscount | C4: fighter más joven con menos de 18 años | lista con un fighter de 17 años, trainingDate=2026-10-20 | Discount(15) | testGivenYoungestFighterUnder18WhenCalculatingBestDiscountThenReturns15PercentDiscount | Superado |
+| calculateBestDiscount | C5: fighter más joven con 18 años o más | lista con fighters adultos | Discount(0) | testGivenYoungestFighterWith18YearsOrMoreWhenCalculatingBestDiscountThenReturnsZeroDiscount | Superado |
+| calculateBestDiscount | C6: fighter nulo en la lista | fighters=[null], trainingDate=2026-10-20 | NullPointerException("Null fighter") | testGivenNullFighterInListWhenCalculatingBestDiscountThenThrowsNullPointerException | Superado |
+| calculateBestDiscount | C7: desempleo menor de 1 año | fighter con desempleo de menos de 1 año completo | Discount(0) | testGivenUnemploymentLessThanOneYearWhenCalculatingBestDiscountThenReturnsZeroDiscount | Superado |
+| calculateBestDiscount | C8: desempleo de 1 año completo | fighter con desempleo de exactamente 1 año | Discount(10) | testGivenOneYearOfUnemploymentWhenCalculatingBestDiscountThenReturns10PercentDiscount | Superado |
+| calculateBestDiscount | C9: desempleo de 2 años completos | fighter con desempleo de exactamente 2 años | Discount(20) | testGivenTwoYearsOfUnemploymentWhenCalculatingBestDiscountThenReturns20PercentDiscount | Fallo inicial. Superado tras la corrección |
+| calculateBestDiscount | C10: desempleo de 3 años completos o más | fighter con desempleo >= 3 años | Discount(30) | testGivenThreeYearsOfUnemploymentWhenCalculatingBestDiscountThenReturns30PercentDiscount | Superado |
+| calculateBestDiscount | C11: concurren descuento juvenil y descuento por desempleo | fighter menor de 18 años y fighter con desempleo >= 3 años | Discount(30), aplicando únicamente el mayor descuento | testGivenYouthAndUnemploymentDiscountWhenCalculatingBestDiscountThenReturnsGreatestDiscount | Superado |
+| calculateBestDiscount | C12: descuento calculado no supera el actual | bestPercentage ya contiene un valor superior | Se conserva el porcentaje mayor | Cubierto por los casos C10 y C11 | Superado |
+
+---
 
 ### Cobertura de condiciones seleccionadas
 | Condicion atomica | Caso que evalua verdadero | Caso que evalua falso | Casos adicionales | Justificacion si no es factible |
@@ -82,17 +87,10 @@ Cuando la condición `youngest == null` toma el valor verdadero, Java realiza ev
 `fighter.birthDate().isBefore(youngest.birthDate())`.  
 Por ello se han diseñado casos que permiten observar la evaluación verdadera y falsa de ambas condiciones, así como la situación en la que la segunda condición no llega a evaluarse.
 
-### Implementación y ejecución de pruebas JUnit
-| Método | Nodo o camino identificado | Datos de entrada y fecha | Resultado esperado según especificación | Nombre del test | Resultado ejecución |
-|---|---|---|---|---|---|
-| findYoungestFighter | C1: fighters nulo | fighters=null, referenceDate=2026-10-20 | NullPointerException("Fighters are required") | testGivenNullFightersWhenFindingYoungestFighterThenThrowsNullPointerException | Superado |
-| findYoungestFighter | C2: referenceDate nula | fighters=[], referenceDate=null | NullPointerException("Reference date is required") | testGivenNullReferenceDateWhenFindingYoungestFighterThenThrowsNullPointerException | Superado |
-| findYoungestFighter | C3: lista vacía | fighters=[], referenceDate=2026-10-20 | Optional.empty() | testGivenEmptyFightersListWhenFindingYoungestFighterThenReturnsEmptyOptional | Superado |
-| findYoungestFighter | C4: fighter nulo dentro de la lista | fighters=[null], referenceDate=2026-10-20 | NullPointerException("Null fighter") | testGivenNullFighterInListWhenFindingYoungestFighterThenThrowsNullPointerException | Superado |
-| findYoungestFighter | C5: un único fighter válido | fighters=[fighter1], referenceDate=2026-10-20 | Optional.of(fighter1) | testGivenSingleFighterWhenFindingYoungestFighterThenReturnsThatFighter | Superado |
-| findYoungestFighter | C6: varios fighters válidos y comparación de fechas de nacimiento | fighters=[fighter1, fighter2], referenceDate=2026-10-20 | Devuelve el fighter con la fecha de nacimiento más reciente | testGivenTwoFightersWhenFindingYoungestFighterThenReturnsYoungestFighter | Fallo. Se detecta defecto |
+---
 
-#### Regresión tras la corrección
+### Defectos detectados tras la ejecución de pruebas JUnit
+#### ReservationDiscountService.findYoungestFighter
 Se sustituyó:  
 ```java
 fighter.birthDate().isBefore(youngest.birthDate())
@@ -102,11 +100,27 @@ por
 fighter.birthDate().isAfter(youngest.birthDate())
 ```  
 
-La especificación establece que el método debe devolver el luchador con la fecha de nacimiento más reciente (el más joven). Sin embargo, la implementación original utilizaba isBefore(), seleccionando al luchador con la fecha de nacimiento más antigua.  
+La especificación establece que el método debe devolver el luchador con la fecha de nacimiento más reciente (el más joven). Sin embargo, la implementación original utilizaba `isBefore()`, seleccionando al luchador con la fecha de nacimiento más antigua.  
 Tras la corrección, se ejecutó nuevamente el test:
-testGivenTwoFightersWhenFindingYoungestFighterThenReturnsYoungestFighter, 
+`testGivenTwoFightersWhenFindingYoungestFighterThenReturnsYoungestFighter`, 
 obteniéndose el resultado esperado.  
 Además, se repitió la ejecución completa de las pruebas de 'findYoungestFighter', verificando que no se introdujeron regresiones y que todos los casos continuaban superándose correctamente.
+
+#### ReservationDiscountService.calculateBestDiscount
+Se sustituyó:
+```java
+else if (completeYears > 2)
+```
+por
+```java
+else if (completeYears >= 2)
+```
+
+La especificación establece que un periodo de desempleo de 2 años completos y menos de 3 años debe producir una bonificación del 20 %.  
+La implementación original asignaba el 10 % para exactamente 2 años de desempleo, debido a que utilizaba la condición `completeYears > 2`.  
+Tras la corrección, se ejecutó nuevamente el test:
+`testGivenTwoYearsOfUnemploymentWhenCalculatingBestDiscountThenReturns20PercentDiscount`, obteniéndose el resultado esperado.  
+Asimismo, se repitió la batería completa de pruebas, verificando que no se introdujeron regresiones.
 
 ---
 
