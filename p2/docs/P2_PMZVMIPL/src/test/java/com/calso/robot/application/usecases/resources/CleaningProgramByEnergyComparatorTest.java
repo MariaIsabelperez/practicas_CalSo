@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import com.calso.robot.domain.model.CleaningProgram;
 import com.calso.robot.domain.valueobjects.Energy;
 
-public class CleaningProgramByEnergyComparatorTest {
+class CleaningProgramByEnergyComparatorTest {
 	private final CleaningProgramByEnergyComparator comparator = new CleaningProgramByEnergyComparator();
 	
 	@Test
