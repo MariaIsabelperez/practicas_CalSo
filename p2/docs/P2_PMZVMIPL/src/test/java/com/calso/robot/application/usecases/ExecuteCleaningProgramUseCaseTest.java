@@ -41,7 +41,7 @@ class ExecuteCleaningProgramUseCaseTest {
 	
 
 	@Test
-	void testGiven3WaterAnd1WaxStockWhenExecutingProgramRequiring1WaterAnd2WaxThenStockRemainsUnchangedAndMissing1Wax() {
+	void testGivenWater3AndWax1StockWhenExecutingProgramRequiringWater1AndWax2ThenStockRemainsUnchangedAndMissingWax1() {
 		StubCleaningInventory stock = new StubCleaningInventory(Map.of(CleaningProduct.WATER, 3, CleaningProduct.WAX, 1));
 		ExecuteCleaningProgramUseCase useCase = new ExecuteCleaningProgramUseCase(stock);
 		
@@ -55,7 +55,7 @@ class ExecuteCleaningProgramUseCaseTest {
 	}
 	
 	@Test
-	void testGiven1SoapStockWhenExecutingProgramRequiring1WaterAnd2WaxThenStockRemainsUnchangedAndMissing1WaterAnd2Wax() {
+	void testGivenSoap1StockWhenExecutingProgramRequiringWater1AndWax2ThenStockRemainsUnchangedAndMissingWater1AndWax2() {
 		StubCleaningInventory stock = new StubCleaningInventory(Map.of(CleaningProduct.SOAP, 1));
 		ExecuteCleaningProgramUseCase useCase = new ExecuteCleaningProgramUseCase(stock);
 		
@@ -68,7 +68,7 @@ class ExecuteCleaningProgramUseCaseTest {
 	}
 	
 	@Test
-	void testGiven3WaterAnd3WaxStockWhenExecutingProgramRequiring1WaterAnd2WaxThenWaterStockBecomes2AndWaxStockBecomes1AndSucceeded() {
+	void testGivenWater3AndWax3StockWhenExecutingProgramRequiringWater1AndWax2ThenWaterStockBecomes2AndWaxStockBecomes1AndSucceeded() {
 		StubCleaningInventory stock = new StubCleaningInventory(Map.of(CleaningProduct.WATER, 3, CleaningProduct.WAX, 3));
 		ExecuteCleaningProgramUseCase useCase = new ExecuteCleaningProgramUseCase(stock);
 		
@@ -81,7 +81,7 @@ class ExecuteCleaningProgramUseCaseTest {
 	}
 	
 	@Test
-	void testGiven1WaterAnd2WaxStockWhenExecutingProgramRequiring1WaterAnd2WaxThenWaterStockBecomes0AndWaxStockBecomes0AndSucceeded() {
+	void testGivenWater1AndWax2StockWhenExecutingProgramRequiringWater1AndWax2ThenWaterStockBecomes0AndWaxStockBecomes0AndSucceeded() {
 		StubCleaningInventory stock = new StubCleaningInventory(Map.of(CleaningProduct.WATER, 1, CleaningProduct.WAX, 2));
 		ExecuteCleaningProgramUseCase useCase = new ExecuteCleaningProgramUseCase(stock);
 		
@@ -94,7 +94,7 @@ class ExecuteCleaningProgramUseCaseTest {
 	}
 	
 	@Test
-	void testGiven1WaterAnd2WaxStockWhenExecutingProgramRequiringNoProductsThenStockRemainsUnchangedAndSucceeded() {
+	void testGivenWater1AndWax2StockWhenExecutingProgramRequiringNoProductsThenStockRemainsUnchangedAndSucceeded() {
 		StubCleaningInventory stock = new StubCleaningInventory(Map.of(CleaningProduct.WATER, 1));
 		ExecuteCleaningProgramUseCase useCase = new ExecuteCleaningProgramUseCase(stock);
 		
@@ -110,7 +110,7 @@ class ExecuteCleaningProgramUseCaseTest {
 	}
 	
 	@Test
-	void testGiven1WaterAnd2WaxStockWhenExecutingProgramRequiring0WaterThenStockRemainsUnchangedAndSucceeded() {
+	void testGivenWater1AndWax2StockWhenExecutingProgramRequiringWater0ThenStockRemainsUnchangedAndSucceeded() {
 		StubCleaningInventory stock = new StubCleaningInventory(Map.of(CleaningProduct.WATER, 1));
 		ExecuteCleaningProgramUseCase useCase = new ExecuteCleaningProgramUseCase(stock);
 		
@@ -126,7 +126,7 @@ class ExecuteCleaningProgramUseCaseTest {
 	}
 	
 	@Test
-	void testGiven1WaterAnd2WaxStockWhenExecutingTwiceProgramRequiring1WaterAnd2WaxThenFirstSuceededAndSecondRequires1WaterAnd2Wax() {
+	void testGivenWater1AndWax2StockWhenExecutingTwiceProgramRequiringWater1AndWax2ThenFirstSuceededAndSecondRequiresWater1AndWax2() {
 		StubCleaningInventory stock = new StubCleaningInventory(Map.of(CleaningProduct.WATER, 1, CleaningProduct.WAX, 2));
 		ExecuteCleaningProgramUseCase useCase = new ExecuteCleaningProgramUseCase(stock);
 		
