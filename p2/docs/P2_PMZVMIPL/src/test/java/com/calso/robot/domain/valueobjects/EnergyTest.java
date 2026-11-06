@@ -5,9 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
-public class EnergyTest {
+class EnergyTest {
 	@Test
-	void testGivenEnergy10WhenCreatingEnergyTheStoresValue10() {
+	void testGivenEnergy10WhenCreatingEnergyThenStoresValue10() {
 		Energy energy = Energy.of(10);
 		assertEquals(10, energy.getValue());
 	}

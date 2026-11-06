@@ -9,7 +9,7 @@ import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 
-public class ExecutionResultTest {
+class ExecutionResultTest {
 	@Test
 	void testGivenExecutedTrueAndEmptyMapWhenCreatingExecutionResultThenStoresValuesCorrectly() {
 		ExecutionResult result = new ExecutionResult(true, Map.of());
@@ -28,8 +28,10 @@ public class ExecutionResultTest {
 	@Test
 	void testGivenMissingProductsWhenTryingToModifyReturnedMapThenThrowsUnsupportedOperationException() {
 		ExecutionResult result = new ExecutionResult(false, Map.of(CleaningProduct.WATER, 1));
+		
+		Map<CleaningProduct,Integer> missingProducts = result.missingProducts();
 		assertThrows(UnsupportedOperationException.class, 
-					() -> result.missingProducts().put(CleaningProduct.WATER, 2));
+					() -> missingProducts.put(CleaningProduct.WATER, 2));
 	}
 	
 	@Test
