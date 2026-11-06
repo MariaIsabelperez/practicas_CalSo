@@ -142,11 +142,20 @@ Asimismo, se repitió la batería completa de pruebas, verificando que no se int
 |---|---|---|---|---|---|
 
 ### Valores límite
+Los valores límite se han seleccionado aplicando la técnica de análisis de valores límite sobre las restricciones definidas en la especificación funcional.  
+Para la `trainingDate` se ha utilizado la fecha fija de entorno E2E (20/10/2026), comprobando un valor anterior, el propio límite y un valor posterior. Para las bonificaciones se han considerado los puntos de cambio de comportamiento indicados en la especificación: 18 años para el descuento juvenil y 1, 2 y 3 años completos para los tramos de desempleo.
+
 | Variable | Valor del límite | Valor elegido | Expectativas |
 |---|---|---|---|
 | trainingDate | Día anterior al límite | 2026-10-19 | Error: "Training date must be in the future" |
 | trainingDate | Valor límite | 2026-10-20 | Error: "Training date must be in the future" |
 | trainingDate | Día posterior al límite | 2026-10-21 | Fecha válida y cálculo del coste correcto |
+| Edad del luchador más joven | 18 años | 17 años | Descuento juvenil del 15% |
+| Edad del luchador más joven | 18 años | 18 años | Sin descuento juvenil |
+| Edad del luchador más joven | 18 años | 19 años | Sin descuento juvenil |
+| Antigüedad de desempleo | 1 año | 1 año | Descuento del 10% |
+| Antigüedad de desempleo | 2 años | 2 años | Descuento del 20% |
+| Antigüedad de desempleo | 3 años | 3 años | Descuento del 30% |
 
 ---
 
