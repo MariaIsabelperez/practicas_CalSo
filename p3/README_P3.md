@@ -140,6 +140,16 @@ Asimismo, se repitió la batería completa de pruebas, verificando que no se int
 ### Casos
 | ID del caso | Clases cubiertas | Equipo/dojo/fecha o URL concreta | Estado inicial | Resultado único esperado | Nombre prueba |
 |---|---|---|---|---|---|
+| CN1 | CE1, CE4, CE7 | EQ-001, D-002, 2026-10-21 | Aplicación iniciada | Se muestran correctamente los datos del coste y la bonificación aplicable | Pendiente |
+| CN2 | CE2, CE4, CE7 | teamId vacío, D-001, 2026-10-21 | Aplicación iniciada | "Team id is required" | Pendiente |
+| CN3 | CE3, CE4, CE7 | /coste?teamId=EQ-999&dojoId=D-001&trainingDate=2026-10-21 | Aplicación iniciada | "Team does not exist" | Pendiente |
+| CN4 | CE1, CE5, CE7 | EQ-001, dojoId vacío, 2026-1O-21 | Aplicación iniciada | "Dojo id is required" | Pendiente |
+| CN5 | CE1, CE6, CE7 | /coste?teamId=EQ-001&dojoId=D-999&trainingDate=2026-10-21 | Aplicación iniciada | "Dojo does not exist" | Pendiente |
+| CN6 | CE1, CE4, CE8 | EQ-001, D-001, 2026-10-20 | Aplicación iniciada | "Training date must be in the future" | Pendiente |
+| CN7 | CE1, CE4, CE8 | EQ-001, D-001, 2026-10-19 | Aplicación iniciada | "Training date must be in the future" | Pendiente |
+| CN8 | Límite edad (<18)| EQ-003, D-003, 2026-10-21 | Aplicación iniciada | Se aplica descuento juvenil del 15% | Pendiente |
+| CN9 | Límite desempleo (2 años) | EQ-004, D-003, 2026-10-21 | Aplicación iniciada | Se aplica descuento del 20% | Pendiente |
+| CN10 | Límite desempleo (3 años) | EQ-005, D-003, 2026-10-21 | Aplicación iniciada | Se aplica descuento del 30% | Pendiente |
 
 ### Valores límite
 Los valores límite se han seleccionado aplicando la técnica de análisis de valores límite sobre las restricciones definidas en la especificación funcional.  
