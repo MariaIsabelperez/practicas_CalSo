@@ -142,14 +142,52 @@ Asimismo, se repitió la batería completa de pruebas, verificando que no se int
 |---|---|---|---|---|---|
 | CN1 | CE1, CE4, CE7 | EQ-001, D-002, 2026-10-21 | Aplicación iniciada | Se muestran correctamente los datos del coste y la bonificación aplicable | Pendiente |
 | CN2 | CE2, CE4, CE7 | teamId vacío, D-001, 2026-10-21 | Aplicación iniciada | "Team id is required" | Pendiente |
-| CN3 | CE3, CE4, CE7 | /coste?teamId=EQ-999&dojoId=D-001&trainingDate=2026-10-21 | Aplicación iniciada | "Team does not exist" | Pendiente |
+| CN3 | CE3, CE4, CE7 | /coste?teamId=EQ-999&dojoId=D-001&trainingDate=2026-10-21 | Aplicación iniciada | "Team does not exist" | testGivenUnknownTeamWhenCalculatingCostThenDisplaysError |
 | CN4 | CE1, CE5, CE7 | EQ-001, dojoId vacío, 2026-1O-21 | Aplicación iniciada | "Dojo id is required" | Pendiente |
-| CN5 | CE1, CE6, CE7 | /coste?teamId=EQ-001&dojoId=D-999&trainingDate=2026-10-21 | Aplicación iniciada | "Dojo does not exist" | Pendiente |
-| CN6 | CE1, CE4, CE8 | EQ-001, D-001, 2026-10-20 | Aplicación iniciada | "Training date must be in the future" | Pendiente |
-| CN7 | CE1, CE4, CE8 | EQ-001, D-001, 2026-10-19 | Aplicación iniciada | "Training date must be in the future" | Pendiente |
-| CN8 | Límite edad (<18)| EQ-003, D-003, 2026-10-21 | Aplicación iniciada | Se aplica descuento juvenil del 15% | Pendiente |
-| CN9 | Límite desempleo (2 años) | EQ-004, D-003, 2026-10-21 | Aplicación iniciada | Se aplica descuento del 20% | Pendiente |
-| CN10 | Límite desempleo (3 años) | EQ-005, D-003, 2026-10-21 | Aplicación iniciada | Se aplica descuento del 30% | Pendiente |
+| CN5 | CE1, CE6, CE7 | /coste?teamId=EQ-001&dojoId=D-999&trainingDate=2026-10-21 | Aplicación iniciada | "Dojo does not exist" | testGivenUnknownDojoWhenCalculatingCostThenDisplaysError |
+| CN6 | CE1, CE4, CE8 | EQ-001, D-001, 2026-10-20 | Aplicación iniciada | "Training date must be in the future" | testGivenTodayTrainingDateWhenCalculatingCostThenDisplaysValidationError |
+| CN7 | CE1, CE4, CE8 | EQ-001, D-001, 2026-10-19 | Aplicación iniciada | "Training date must be in the future" | testGivenPastTrainingDateWhenCalculatingCostThenDisplaysValidationError |
+| CN8 | Límite edad (<18)| EQ-003, D-003, 2026-10-21 | Aplicación iniciada | Se aplica descuento juvenil del 15% | testGivenYouthBoundaryTeamWhenCalculatingCostThenAppliesYouthDiscount |
+| CN9 | Límite desempleo (2 años) | EQ-004, D-003, 2026-10-21 | Aplicación iniciada | Se aplica descuento del 20% | testGivenTwoYearUnemploymentBoundaryWhenCalculatingCostThenAppliesTwentyPercentDiscount |
+| CN10 | Límite desempleo (3 años) | EQ-005, D-003, 2026-10-21 | Aplicación iniciada | Se aplica descuento del 30% | testGivenThreeYearUnemploymentBoundaryWhenCalculatingCostThenAppliesThirtyPercentDiscount |
+
+
+### Ejecución de pruebas Selenium
+Se implementaron los casos de prueba definidos para la pantalla `/coste` utilizando la infraestructura proporcionada en `BrowserE2ESupport`.  
+Los escenarios relacionados con validaciones de fecha, identificadores inexistentes y límite de edad se ejecutaron satisfactoriamente tras arrancar la aplicación con el perfil `e2e`, que fija la fecha del sistema en 20/10/2026.
+
+| Caso | Resultado |
+|---|---|
+| CN3 | Superado |
+| CN5 | Superado |
+| CN6 | Superado |
+| CN7 | Superado |
+| CN8 | Superado |
+
+Los casos CN9 y CN10 produjeron resultados distintos a los inicialmente esperados durante el diseño de pruebas.  
+
+#### Incidencias observadas
+
+Durante la ejecución de los casos asociados a los límites de desempleo se observó que:  
+
+| Caso | Resultado esperado | Resultado obtenido |
+|---|---|---|
+| CN9 | 20 % | 0 % |
+| CN10 | 30 % | 10 % |
+
+Tras revisar los datos cargados en `InMemoryCatalog`, se observó que los equipos utilizados para las fronteras de desempleo contienen los siguientes periodos:  
+
+- EQ-004: inicio de desempleo el 20/11/2025.
+- EQ-005: inicio de desempleo el 20/11/2024.  
+
+Para la fecha de entrenamiento empleada en las pruebas (21/10/2026), dichos periodos no alcanzan dos ni tres años completos respectivamente. 
+
+Por este motivo los resultados obtenidos (0 % y 10 %) son coherentes con los datos actualmente cargados en el catálogo.  
+
+Queda pendiente determinar si la discrepancia procede de una expectativa incorrecta en el diseño de la prueba o de una configuración errónea de los datos de prueba suministrados.
+
+---
+
 
 ### Valores límite
 Los valores límite se han seleccionado aplicando la técnica de análisis de valores límite sobre las restricciones definidas en la especificación funcional.  
